@@ -1,12 +1,24 @@
-import React, {Component}from 'react'
-import ReactDOM from 'react-dom'
+import { Route, withRouter, Redirect } from "react-router-dom"
+import React, { Component } from 'react'
+import Login from './components/auth/Login'
+import Home from './components/home/Home'
 
-class AppView extends Component{
+class AppView extends Component {
 
-    render(){
-        return(
+    render() {
+        return (
             <>
-                <p>This is the App</p>
+                <Route exact path="/login" render={(props) => {
+                    return <Login />
+                }} />
+
+                <Home exact path="/" render={(props) => {
+                    if (this.props.user) {
+                        return <Home {...props} />
+                    } else {
+                        return <Redirect to="/login" />
+                    }
+                }} />
             </>
         )
     }

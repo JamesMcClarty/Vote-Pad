@@ -1,14 +1,40 @@
 import React, {Component} from 'react'
-import reactDOM from 'react-dom'
 import Login from './components/auth/Login'
 import Navbar from './components/nav/Navbar'
 import AppView from './AppView'
 
 class Votepad extends Component{
 
-    state={
-        user:false
+    state = {
+        user: localStorage.getItem("credentials") !== null
+      }
+      isAuthenticated = () => localStorage.getItem("credentials") !== null
+    
+      clearUser = () => {
+        localStorage.clear()
+    
+        this.setState({
+            user: this.isAuthenticated()
+        });
+    
     }
+      setUser = (authObj) => {
+        localStorage.setItem(
+          "credentials",
+          JSON.stringify(authObj)
+        )
+        this.setState({
+          user: this.isAuthenticated()
+        });
+      }
+    
+      componentDidMount(){
+        this.setState({
+          user: this.isAuthenticated()
+        })
+      }
+
+
 
     render(){
         return(
@@ -20,7 +46,7 @@ class Votepad extends Component{
                     </>
                 ):(
                     <>
-                    <Login/>
+                    <Login setUser = {this.setUser}/>
                     </>
                 )}
             </>

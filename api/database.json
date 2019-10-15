@@ -1,0 +1,59 @@
+{
+    "users":[
+        {
+            "id":1,
+            "name":"James McClarty",
+            "username":"herooftime1000",
+            "email":"mariobud@gmail.com",
+            "password":"1234"
+        },
+        {
+            "id":2,
+            "name":"Megan McClarty",
+            "username":"eggmcmegan",
+            "email":"eggmcmegan@gmail.com",
+            "password":"1234"
+        },
+        {
+            "id":3,
+            "name":"Libbie Bullock",
+            "username":"LibJib",
+            "email":"libbiebullock@gmail.com",
+            "password":"1234"
+        }
+    
+    ],
+
+    "boards":[
+        {
+            "id":1,
+            "userId":1,
+            "subjectName":"What to put in my pie?",
+            "dateCreated":"Currentdate",
+            "isOpenForSubmit":true,
+            "isOpenForVotes":false,
+            "usersPosted":[2,3]
+        }
+    ],
+
+    "ideas":[
+        {
+            "id":1,
+            "userId":2,
+            "boardId":1,
+            "description": "Chocolate",
+            "score": 1,
+            "usersVoted": [3],
+            "isChosen": false
+        },
+        {
+            "id":2,
+            "userId":3,
+            "boardId":1,
+            "description": "Apple",
+            "score": 0,
+            "usersVoted": [],
+            "isChosen": false
+        }
+    ]
+}

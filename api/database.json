@@ -32,7 +32,6 @@
             "dateCreated":"Currentdate",
             "isOpenForSubmit":true,
             "isOpenForVotes":false,
-            "usersPosted":[2,3]
         }
     ],
 
@@ -42,8 +41,7 @@
             "userId":2,
             "boardId":1,
             "description": "Chocolate",
-            "score": 1,
-            "usersVoted": [3],
+            "score": 0,
             "isChosen": false
         },
         {
@@ -52,8 +50,34 @@
             "boardId":1,
             "description": "Apple",
             "score": 0,
-            "usersVoted": [],
             "isChosen": false
+        }
+    ],
+
+    "votes":[
+        {
+            "id":1,
+            "ideaId":1,
+            "userId":3,
+            "typeId":1
+        },
+        {
+            "id":2,
+            "ideaId":2,
+            "userId":2,
+            "typeId":2
+        }
+    ],
+
+    "types":[
+        {
+            "id":1,
+            "type":"up"
+        },
+
+        {
+            "id":2,
+            "type":"down"
         }
     ]
 }

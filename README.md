@@ -3,7 +3,7 @@ Capstone project where users can submit and vote for ideas in different subjects
 
 ### Documentation
 
-[Document](https://docs.google.com/document/d/15LHspgiqUVAaQHOkVmZst-iIOrlyH_QitRDOgP9_PEs/edit "Votepad Capstone Proposal Documentation")
+[Votepad Capstone Proposal Documentation](https://docs.google.com/document/d/15LHspgiqUVAaQHOkVmZst-iIOrlyH_QitRDOgP9_PEs "Votepad Capstone Proposal Documentation")
 
 ### ERD Diagram
 

@@ -30,8 +30,7 @@
             "userId":1,
             "subjectName":"What to put in my pie?",
             "dateCreated":"Currentdate",
-            "isOpenForSubmit":true,
-            "isOpenForVotes":false
+            "boardStateId":1
         }
     ],
 
@@ -78,6 +77,21 @@
         {
             "id":2,
             "type":"down"
+        }
+    ],
+
+    "boardstates":[
+        {
+            "id":1,
+            "state":"openforideas"
+        },
+        {
+            "id":2,
+            "state":"openforvotes"
+        },
+        {
+            "id":3,
+            "state":"closed"
         }
     ]
 }

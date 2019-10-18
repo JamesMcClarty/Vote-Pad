@@ -30,7 +30,21 @@
             "userId":1,
             "subjectName":"What to put in my pie?",
             "dateCreated":"Currentdate",
-            "boardStateId":1
+            "boardstateId":1
+        },
+        {
+            "id":2,
+            "userId":1,
+            "subjectName":"What am I going to do with my life. Holy crap, someone help me AHHHHH?",
+            "dateCreated":"Currentdate",
+            "boardstateId":1
+        },
+        {
+            "id":3,
+            "userId":1,
+            "subjectName":"What to put in my pie?",
+            "dateCreated":"Currentdate",
+            "boardstateId":1
         }
     ],
 
@@ -83,15 +97,15 @@
     "boardstates":[
         {
             "id":1,
-            "state":"openforideas"
+            "state":"Open for ideas!"
         },
         {
             "id":2,
-            "state":"openforvotes"
+            "state":"Open for votes!"
         },
         {
             "id":3,
-            "state":"closed"
+            "state":"Closed..."
         }
     ]
 }

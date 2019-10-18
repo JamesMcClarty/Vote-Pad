@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
+import { Link } from "react-router-dom";
 import './Navbar.css'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-export default class Example extends React.Component {
+class Home extends Component {
     constructor(props) {
         super(props);
 
@@ -23,15 +24,15 @@ export default class Example extends React.Component {
 
     render() {
         return (
-            <div className="nav-container">
-                <div className="nav-dropdown">
-
-                    <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                        <DropdownToggle caret>
-                            Dropdown
-              </DropdownToggle>
-                        <DropdownMenu>
-                            {this.props.userLogged ? (
+            <>
+                <div className="nav-container">
+                <Dropdown group isOpen={this.state.dropdownOpen} size="lg" toggle={this.toggle}>
+                    <DropdownToggle caret>
+                        
+                    </DropdownToggle>
+                    <DropdownMenu>
+                    <DropdownItem></DropdownItem>
+                    {this.props.userLogged ? (
                                 <>
                                     <DropdownItem>My Boards</DropdownItem>
                                     <DropdownItem>Board List</DropdownItem>
@@ -45,31 +46,27 @@ export default class Example extends React.Component {
                                         <DropdownItem>Register</DropdownItem>
                                     </>
                                 )}
-
-                        </DropdownMenu>
-                    </Dropdown>
-                </div>
-
-                <div>
-                    <p>VOTEPAD</p>
-                </div>
-
-                <div>
-                    {this.props.userLogged ? (
-                        <>
-                            <p>Log Out</p>
-                        </>
-                    ) : (
+                    </DropdownMenu>
+                </Dropdown>
+                    <div>
+                        <p>VOTEPAD</p>
+                    </div>
+                    <div>
+                        {this.props.userLogged ? (
                             <>
-                                <p>Log in</p>
-                                <p>Register</p>
+                                <p>Log Out</p>
                             </>
-                        )}
-
+                        ) : (
+                                <>
+                                    <p>Log in</p>
+                                    <p>Register</p>
+                                </>
+                            )}
+                    </div>
                 </div>
-
-
-            </div>
+            </>
         );
     }
 }
+
+export default Home

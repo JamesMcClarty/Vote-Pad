@@ -5,7 +5,9 @@ class Home extends Component{
     render(){
     return(
         <>
+        <article className = "home-container">
         <p> You're on home page!</p>
+        </article>
         </>
     )
     }

@@ -39,9 +39,9 @@ class Votepad extends Component{
     render(){
         return(
             <>
+                <Navbar userLogged = {this.state.user}/>
                 {this.state.user ?(
                     <>
-                    <Navbar/>
                     <AppView/>
                     </>
                 ):(

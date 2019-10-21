@@ -25,5 +25,8 @@ export default {
   },
   getAllByConditionAndEmbed(database, condition ,value, altDatabase) {
     return fetch(`${remoteURL}/${database}?${condition}=${value}&_embed=${altDatabase}`).then(e => e.json())
+  },
+  getOneExpandAndEmbed(database, id, embed, expand) {
+    return fetch(`${remoteURL}/${database}/${id}/?_embed=${embed}&_expand=${expand}`).then(e => e.json())
   }
 }

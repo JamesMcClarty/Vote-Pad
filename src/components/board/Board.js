@@ -12,6 +12,7 @@ class Board extends Component {
         userName: "",
         ideas: [],
         boardState: "",
+        showSelected: false
     };
 
 
@@ -27,7 +28,26 @@ class Board extends Component {
             })
     }
 
+    switchToSelected = () => {
+        console.log(this.state)
+        this.setState({ showSelected: true })
+    }
+
+    switchToUnselected = () => {
+        console.log(this.state)
+        this.setState({showSelected:false})
+    }
+
     render() {
+        console.log(this.state);
+        const ideasChose = []
+
+        this.state.ideas.forEach(idea => {
+            if(idea.isChosen === this.state.showSelected){
+                ideasChose.push(idea)
+            }
+        });
+
         return (
             <article className="board-containter">
                 <div className="subject-containter">
@@ -35,8 +55,12 @@ class Board extends Component {
                     <p className="board-subject-user">By {this.state.userName}</p>
                 </div>
                 <div className="main-board-container">
+                    <div className = "note-board-header">
+                        <button className = "board-tab" onClick={this.switchToUnselected}>Unselected</button>
+                        <button className = "board-tab" onClick={this.switchToSelected}>Selected</button>
+                    </div>
                     <div className="note-board">
-                        {this.state.ideas.map(idea => <BoardIdeaCard key={idea.id} idea={idea} {...this.props}/>)}
+                        {ideasChose.map(idea => <BoardIdeaCard key={idea.id} idea={idea} boardState={this.state.boardState} {...this.props}/>)}
                     </div>
                 </div>
             </article>

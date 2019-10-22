@@ -9,11 +9,17 @@ class BoardIdeaCard extends Component {
     }
 
     componentDidMount() {
-
+        APIManager.getOneDataEmbedAnother("ideas", this.props.idea.id, "votes")
+            .then(data => {
+                this.setState({ votes: data.votes })
+            })
     }
 
     render() {
-        console.log(this.props.idea)
+
+        const upvotes = 0;
+        const downvotes = 0;
+
         return (
             <>
                 <div className="idea-card">
@@ -28,17 +34,24 @@ class BoardIdeaCard extends Component {
                                     <p>???</p>
                                 </>
                             )}
+                    </div>
+                    <div className="idea-body">
+                        <p className="idea-description">{this.props.idea.description}</p>
+                    </div>
+                    <div className="idea-footer">
+                        <div className="checkmark-container">
+                            <img className="checkmark" src={require('../../websiteresources/checkmark.png')} />
+                            <p className="checkmark-votes">{upvotes}</p>
                         </div>
-                        <div className="idea-body">
-
-                        </div>
-                        <div className="idea-footer">
-
+                        <div className="xmark-container">
+                            <img className="xmark" src={require('../../websiteresources/xmark.png')} />
+                            <p className="xmark-votes">{downvotes}</p>
                         </div>
                     </div>
+                </div>
             </>
-                )
-            }
-        }
-        
+        )
+    }
+}
+
 export default BoardIdeaCard

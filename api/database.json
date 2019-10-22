@@ -53,8 +53,7 @@
             "id":1,
             "userId":2,
             "boardId":1,
-            "description": "Chocolate",
-            "score": 0,
+            "description": "Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate",
             "isChosen": false
         },
         {
@@ -62,7 +61,6 @@
             "userId":3,
             "boardId":1,
             "description": "Apple",
-            "score": 0,
             "isChosen": false
         }
     ],

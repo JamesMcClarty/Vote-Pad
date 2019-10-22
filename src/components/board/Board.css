@@ -1,3 +1,48 @@
 .note-board{
     background-color: burlywood;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding:2%;
+
+}
+.idea-card{
+    background-image: url('../../websiteresources/notepad.png');
+    width: 45%;
+    max-width:400px;
+    min-width: 400px;
+    height: 300px;
+}
+.checkmark{
+    width:40px;
+    margin-left: 5px;
+    margin-right: 15px;
+}
+.xmark{
+    width:40px;
+    margin-left: 5px;
+    margin-right: 15px;
+}
+.checkmark-container{
+    display: flex;
+}
+.xmark-container{
+    display: flex;
+}
+.idea-footer{
+    display: flex;
+}
+.idea-body{
+    width:390px;
+    height: 213px;
+    overflow: hidden;
+    word-wrap: break-word;
+    padding: 1%;
+}
+.checkmark-votes{
+    color: green;
+}
+.xmark-votes{
+    color: red;
 }

@@ -15,10 +15,20 @@ class BoardIdeaCard extends Component {
             })
     }
 
+    implementStateButtons(){
+        const buttonscript=<></>
+        if(this.props.boardState === 1){
+
+        }
+        return buttonscript
+    }
+
     render() {
 
         const upvotes = 0;
         const downvotes = 0;
+
+   
 
         return (
             <>
@@ -40,12 +50,15 @@ class BoardIdeaCard extends Component {
                     </div>
                     <div className="idea-footer">
                         <div className="checkmark-container">
-                            <img className="checkmark" src={require('../../websiteresources/checkmark.png')} />
+                            <button className="checkmark"></button>
                             <p className="checkmark-votes">{upvotes}</p>
                         </div>
                         <div className="xmark-container">
                             <img className="xmark" src={require('../../websiteresources/xmark.png')} />
                             <p className="xmark-votes">{downvotes}</p>
+                        </div>
+                        <div>
+
                         </div>
                     </div>
                 </div>

@@ -20,7 +20,7 @@ class Login extends Component {
     e.preventDefault()
     let credentials = {email: this.state.email, password: this.state.password}
     this.props.setUser(credentials);
-    this.props.history.push("/home");
+    this.props.history.push("/");
   }
 
   render() {

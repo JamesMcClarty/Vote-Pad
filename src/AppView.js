@@ -13,7 +13,7 @@ class AppView extends Component {
                     return <Login {...props} setUser={this.props.setUser}/>
                 }} />
 
-                <Route exact path="/home" render={(props) => {
+                <Route exact path="/" render={(props) => {
                     if (this.props.user) {
                         return <Home {...props} />
                     } else {
@@ -23,7 +23,7 @@ class AppView extends Component {
 
                 <Route exact path="/boards/:boardId(\d+)/details" render={(props) => {
                     if (this.props.user) {
-                        return <Board {...props} />
+                        return <Board {...props}/>
                     }
                     else {
                         return <Redirect to="/login" />

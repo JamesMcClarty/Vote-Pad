@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
+import EditBoardForm from './EditBoardForm'
 
 class BoardIdeaCard extends Component {
 
@@ -123,7 +124,7 @@ class BoardIdeaCard extends Component {
             }
             else if (!this.props.isCurrentBoardUser && this.props.boardState === 1 && this.state.currentPoster === this.state.userLoggedIn) {
                 return <>
-                    <button className="footer-button">Edit</button>
+                    <EditBoardForm/>
                     <button className="footer-button" onClick={() => this.props.deleteIdea(this.props.idea.id)}>Delete</button>
                 </>
             }

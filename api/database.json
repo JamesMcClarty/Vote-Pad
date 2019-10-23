@@ -46,13 +46,15 @@
     }
   ],
   "ideas": [
+
     {
       "id": 1,
       "userId": 2,
       "boardId": 1,
-      "description": "Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate",
+      "description": "Chocolate",
       "isChosen": false
     },
+
     {
       "id": 2,
       "userId": 3,
@@ -62,12 +64,6 @@
     }
   ],
   "votes": [
-    {
-      "id": 1,
-      "ideaId": 1,
-      "userId": 3,
-      "typeId": 1
-    },
     {
       "id": 2,
       "ideaId": 2,

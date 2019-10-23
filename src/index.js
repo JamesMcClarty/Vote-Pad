@@ -3,13 +3,12 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router } from "react-router-dom"
 import Votepad from './Votepad.js';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
 import * as serviceWorker from './serviceWorker';
 
 
 ReactDOM.render(
     <Router>
-      <Votepad />
+      <Votepad/>
     </Router>
     , document.getElementById('root'))
 

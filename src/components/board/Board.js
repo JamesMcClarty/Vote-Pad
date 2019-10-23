@@ -92,7 +92,8 @@ class Board extends Component {
                     <div className="note-board">
                         {ideasChose.map(idea => <BoardIdeaCard
                             key={idea.id}
-                            idea={idea} boardState={this.state.boardStateId}
+                            idea={idea} 
+                            boardState={this.state.boardStateId}
                             isCurrentBoardUser={isCurrentBoardUser}
                             subjectEmail={this.state.subjectEmail}
                             deleteIdea={this.deleteIdea}

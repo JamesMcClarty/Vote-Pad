@@ -174,11 +174,21 @@ class BoardIdeaCard extends Component {
                     <div className="idea-footer">
                         <div className="mark-containers">
                             <div className="checkmark-container">
+                                {this.state.currentPoster !== this.state.userLoggedIn ?(
                                 <button className="checkmark" onClick={this.voteUp}></button>
+                                )
+                                :(
+                                    <button className="checkmark disabled"></button>
+                                )}
                                 <p className="checkmark-votes">{upvotes}</p>
                             </div>
                             <div className="xmark-container">
+                            {this.state.currentPoster !== this.state.userLoggedIn ?(
                                 <button className="xmark" onClick={this.voteDown}></button>
+                                )
+                                :(
+                                    <button className="xmark disabled"></button>
+                                )}
                                 <p className="xmark-votes">{downvotes}</p>
                             </div>
                         </div>

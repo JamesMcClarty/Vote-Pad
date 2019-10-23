@@ -1,109 +1,114 @@
 {
-    "users":[
-        {
-            "id":1,
-            "name":"James McClarty",
-            "username":"herooftime1000",
-            "email":"mariobud@gmail.com",
-            "password":"1234"
-        },
-        {
-            "id":2,
-            "name":"Megan McClarty",
-            "username":"eggmcmegan",
-            "email":"eggmcmegan@gmail.com",
-            "password":"1234"
-        },
-        {
-            "id":3,
-            "name":"Libbie Bullock",
-            "username":"LibJib",
-            "email":"libbiebullock@gmail.com",
-            "password":"1234"
-        }
-    
-    ],
-
-    "boards":[
-        {
-            "id":1,
-            "userId":1,
-            "subjectName":"What to put in my pie?",
-            "dateCreated":"Currentdate",
-            "boardstateId":1
-        },
-        {
-            "id":2,
-            "userId":1,
-            "subjectName":"What am I going to do with my life. Holy crap, someone help me AHHHHH?",
-            "dateCreated":"Currentdate",
-            "boardstateId":1
-        },
-        {
-            "id":3,
-            "userId":1,
-            "subjectName":"What to put in my pie?",
-            "dateCreated":"Currentdate",
-            "boardstateId":1
-        }
-    ],
-
-    "ideas":[
-        {
-            "id":1,
-            "userId":2,
-            "boardId":1,
-            "description": "Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate",
-            "isChosen": false
-        },
-        {
-            "id":2,
-            "userId":3,
-            "boardId":1,
-            "description": "Apple",
-            "isChosen": false
-        }
-    ],
-
-    "votes":[
-        {
-            "id":1,
-            "ideaId":1,
-            "userId":3,
-            "typeId":1
-        },
-        {
-            "id":2,
-            "ideaId":2,
-            "userId":2,
-            "typeId":2
-        }
-    ],
-
-    "types":[
-        {
-            "id":1,
-            "type":"up"
-        },
-
-        {
-            "id":2,
-            "type":"down"
-        }
-    ],
-
-    "boardstates":[
-        {
-            "id":1,
-            "state":"Open for ideas!"
-        },
-        {
-            "id":2,
-            "state":"Open for votes!"
-        },
-        {
-            "id":3,
-            "state":"Closed..."
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "name": "James McClarty",
+      "username": "herooftime1000",
+      "email": "mariobud@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": 2,
+      "name": "Megan McClarty",
+      "username": "eggmcmegan",
+      "email": "eggmcmegan@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": 3,
+      "name": "Libbie Bullock",
+      "username": "LibJib",
+      "email": "libbiebullock@gmail.com",
+      "password": "1234"
+    }
+  ],
+  "boards": [
+    {
+      "id": 1,
+      "userId": 1,
+      "subjectName": "What to put in my pie?",
+      "dateCreated": "Currentdate",
+      "boardstateId": 1
+    },
+    {
+      "id": 2,
+      "userId": 1,
+      "subjectName": "What am I going to do with my life. Holy crap, someone help me AHHHHH?",
+      "dateCreated": "Currentdate",
+      "boardstateId": 1
+    },
+    {
+      "id": 3,
+      "userId": 1,
+      "subjectName": "What to put in my pie?",
+      "dateCreated": "Currentdate",
+      "boardstateId": 1
+    }
+  ],
+  "ideas": [
+    {
+      "id": 1,
+      "userId": 2,
+      "boardId": 1,
+      "description": "Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate Chocolate",
+      "isChosen": false
+    },
+    {
+      "id": 2,
+      "userId": 3,
+      "boardId": 1,
+      "description": "Apple",
+      "isChosen": false
+    }
+  ],
+  "votes": [
+    {
+      "id": 1,
+      "ideaId": 1,
+      "userId": 3,
+      "typeId": 1
+    },
+    {
+      "id": 2,
+      "ideaId": 2,
+      "userId": 2,
+      "typeId": 2
+    },
+    {
+      "id": 3,
+      "ideaId": 2,
+      "userId": 3,
+      "typeId": 2
+    },
+    {
+      "id": 4,
+      "ideaId": 1,
+      "userId": 2,
+      "typeId": 2
+    }
+  ],
+  "types": [
+    {
+      "id": 1,
+      "type": "up"
+    },
+    {
+      "id": 2,
+      "type": "down"
+    }
+  ],
+  "boardstates": [
+    {
+      "id": 1,
+      "state": "Open for ideas!"
+    },
+    {
+      "id": 2,
+      "state": "Open for votes!"
+    },
+    {
+      "id": 3,
+      "state": "Closed..."
+    }
+  ]
 }

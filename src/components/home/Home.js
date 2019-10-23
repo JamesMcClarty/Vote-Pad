@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom'
 import React, { Component } from 'react'
 import HomeCard from './HomeCard';
 import APIManager from '../../modules/APIManager'

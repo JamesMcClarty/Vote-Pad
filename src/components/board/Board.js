@@ -13,19 +13,33 @@ class Board extends Component {
         userName: "",
         ideas: [],
         boardState: "",
-        showSelected: false,
+        boardStateId: 0,
+        showSelected: false
     };
 
     componentDidMount() {
         APIManager.getOneExpandAndEmbed("boards", this.props.match.params.boardId, "ideas", "user")
             .then((data) => {
-                this.setState({ subjectName: data.subjectName, userName: data.user.username, subjectEmail: data.user.email, ideas: data.ideas })
+                this.setState({subjectName: data.subjectName, userName: data.user.username, subjectEmail: data.user.email, ideas: data.ideas })
                 APIManager.getOneDataExpandAnother("boards", this.props.match.params.boardId, "boardstate")
                     .then((newData) => {
-
-                        this.setState({ boardState: newData.boardstate.state })
+                        this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id })
                     })
             })
+    }
+
+    deleteIdea = ideaId => {
+        APIManager.delete("ideas", ideaId)
+        .then(() =>{
+            APIManager.getOneDataEmbedAnother("boards", this.props.match.params.boardId, "ideas")
+            .then(data => {
+                this.setState({ideas:data.ideas})
+                APIManager.getOneDataExpandAnother("boards", this.props.match.params.boardId, "boardstate")
+                    .then((newData) => {
+                        this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id })
+                    })
+            })
+        })
     }
 
     switchToSelected = () => {
@@ -47,7 +61,6 @@ class Board extends Component {
 
         let returnedStorage = localStorage.getItem('credentials')
         let currentUser = JSON.parse(returnedStorage)
-        console.log(this.state.subjectEmail, currentUser.email)
         const isCurrentBoardUser = currentUser.email === this.state.subjectEmail
 
         return (
@@ -61,6 +74,7 @@ class Board extends Component {
                         <div className="board-tabs-container">
                             <button className="board-tab" onClick={this.switchToUnselected}>Unselected</button>
                             <button className="board-tab" onClick={this.switchToSelected}>Selected</button>
+                            <h3 className="status">Status: {this.state.boardState}</h3>
                         </div>
                         <div>
 
@@ -76,7 +90,13 @@ class Board extends Component {
                         </div>
                     </div>
                     <div className="note-board">
-                        {ideasChose.map(idea => <BoardIdeaCard key={idea.id} idea={idea} boardState={this.state.boardState}  {...this.props} />)}
+                        {ideasChose.map(idea => <BoardIdeaCard
+                            key={idea.id}
+                            idea={idea} boardState={this.state.boardStateId}
+                            isCurrentBoardUser={isCurrentBoardUser}
+                            subjectEmail={this.state.subjectEmail}
+                            deleteIdea={this.deleteIdea}
+                            {...this.props} />)}
                     </div>
                 </div>
             </article>

@@ -23,9 +23,15 @@
 }
 
 .xmark{
+    background:url('../../websiteresources/xmark.png') no-repeat;
     width:40px;
     margin-left: 5px;
     margin-right: 15px;
+    border:none;
+
+}
+.mark-containers{
+    display: flex;
 }
 .checkmark-container{
     display: flex;

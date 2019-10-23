@@ -28,5 +28,29 @@ export default {
   },
   getOneExpandAndEmbed(database, id, embed, expand) {
     return fetch(`${remoteURL}/${database}/${id}/?_embed=${embed}&_expand=${expand}`).then(e => e.json())
+  },
+  delete(database, id) {
+    return fetch(`${remoteURL}/${database}/${id}`, {
+      method: "DELETE"
+    })
+      .then(result => result.json())
+  },
+  update(database, editedObject) {
+    return fetch(`${remoteURL}/${database}/${editedObject.id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(editedObject)
+    }).then(data => data.json());
+  },
+  post(database,newObject) {
+    return fetch(`${remoteURL}/${database}`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(newObject)
+    }).then(data => data.json())
   }
 }

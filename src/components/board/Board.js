@@ -42,6 +42,18 @@ class Board extends Component {
         })
     }
 
+    reload = () =>{
+        console.log("reloaded")
+        APIManager.getOneDataEmbedAnother("boards", this.props.match.params.boardId, "ideas")
+            .then(data => {
+                this.setState({ideas:data.ideas})
+                APIManager.getOneDataExpandAnother("boards", this.props.match.params.boardId, "boardstate")
+                    .then((newData) => {
+                        this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id })
+                    })
+            })
+    }
+
     switchToSelected = () => {
         this.setState({ showSelected: true })
     }
@@ -97,6 +109,7 @@ class Board extends Component {
                             isCurrentBoardUser={isCurrentBoardUser}
                             subjectEmail={this.state.subjectEmail}
                             deleteIdea={this.deleteIdea}
+                            reload = {this.reload}
                             {...this.props} />)}
                     </div>
                 </div>

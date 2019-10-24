@@ -46,15 +46,13 @@
     }
   ],
   "ideas": [
-
     {
       "id": 1,
       "userId": 2,
       "boardId": 1,
-      "description": "Chocolate",
+      "description": "Chocolate rain",
       "isChosen": false
     },
-
     {
       "id": 2,
       "userId": 3,

@@ -57,3 +57,7 @@
 .disabled{
     filter: grayscale(100%);
 }
+
+.button-container{
+    display: flex;
+}

@@ -2,6 +2,8 @@ import ReactDOM from 'react-dom'
 import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
 import BoardIdeaCard from './BoardIdeaCard'
+import IdeaForm from './IdeaForm'
+
 import './Board.css'
 
 
@@ -43,7 +45,6 @@ class Board extends Component {
     }
 
     reload = () =>{
-        console.log("reloaded")
         APIManager.getOneDataEmbedAnother("boards", this.props.match.params.boardId, "ideas")
             .then(data => {
                 this.setState({ideas:data.ideas})
@@ -96,7 +97,7 @@ class Board extends Component {
                                 </>
                             ) : (
                                     <>
-                                        <button className="">Submit Idea</button>
+                                        <IdeaForm email={currentUser.email} boardId={this.state.boardStateId} reload ={this.reload} {...this.props}/>
                                     </>
                                 )}
                         </div>

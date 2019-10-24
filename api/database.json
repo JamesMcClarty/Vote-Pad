@@ -47,18 +47,18 @@
   ],
   "ideas": [
     {
-      "id": 1,
-      "userId": 2,
-      "boardId": 1,
-      "description": "Chocolate rain",
-      "isChosen": false
-    },
-    {
       "id": 2,
       "userId": 3,
       "boardId": 1,
       "description": "Apple",
       "isChosen": false
+    },
+    {
+      "userId": 2,
+      "boardId": 1,
+      "description": "Vanilla",
+      "isChosen": false,
+      "id": 3
     }
   ],
   "votes": [
@@ -72,7 +72,7 @@
       "id": 3,
       "ideaId": 2,
       "userId": 3,
-      "typeId": 2
+      "typeId": 1
     }
   ],
   "types": [

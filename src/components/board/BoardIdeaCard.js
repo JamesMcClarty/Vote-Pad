@@ -124,7 +124,7 @@ class BoardIdeaCard extends Component {
             }
             else if (!this.props.isCurrentBoardUser && this.props.boardState === 1 && this.state.currentPoster === this.state.userLoggedIn) {
                 return <>
-                    <EditIdeaForm idea = {this.props.idea} reload = {this.props.reload} {...this.props}/>
+                    <EditIdeaForm idea = {this.props.idea} reload = {this.props.reload}/>
                     <button className="footer-button" onClick={() => this.props.deleteIdea(this.props.idea.id)}>Delete</button>
                 </>
             }

@@ -27,7 +27,6 @@
       "id": 1,
       "userId": 1,
       "subjectName": "What to put in my pie?",
-      "dateCreated": "Currentdate",
       "boardstateId": 1
     },
     {
@@ -72,6 +71,12 @@
       "id": 3,
       "ideaId": 2,
       "userId": 3,
+      "typeId": 2
+    },
+    {
+      "id": 4,
+      "ideaId": 3,
+      "userId": 2,
       "typeId": 1
     }
   ],

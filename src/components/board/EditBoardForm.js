@@ -1,10 +1,10 @@
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 
-import React, {Component} from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import React, { Component } from 'react';
+import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import APIManager from '../../modules/APIManager'
 
-class EditBoardForm extends Component{
+class EditBoardForm extends Component {
 
   state = {
     isModalOpen: false,
@@ -21,55 +21,91 @@ class EditBoardForm extends Component{
 
   insertEdit = () => {
     this.setState({ loadingStatus: true });
-    const editedObject ={
-      id: this.props.idea.id,
-      userId: this.props.idea.userId,
-      boardId: this.props.idea.boardId,
-      description: this.state.editedIdea,
-      "isChosen": false
-    }    
-    APIManager.update("ideas", editedObject)
-    .then(() =>{
-    this.toggle();
-    this.props.reload();
+    const editedBoard = {
+      id: parseInt(this.props.boardId),
+      userId: this.props.userId,
+      subjectName: this.state.editedSubject,
+      dateCreated: this.props.currentDate,
+      boardstateId: parseInt(this.state.stateChange)
+    }
+    APIManager.update("boards", editedBoard)
+      .then(() => {
+        this.toggle();
+        this.setState({ loadingStatus: false })
+        this.props.reload();
+      })
+  }
+
+  componentDidMount() {
+    this.setState({
+      editedSubject: this.props.subjectName,
+      stateChange: parseInt(this.props.boardId)
     })
   }
 
-  componentDidMount(){
-
-  }
-
   toggle = () => {
-    this.setState({isModalOpen: !this.state.isModalOpen})
+    this.setState({ isModalOpen: !this.state.isModalOpen })
   }
 
-  render(){
-  return (
-    <div>
-      <Button onClick={this.toggle}>Edit</Button>
-      <Modal isOpen={this.state.isModalOpen} toggle={this.toggle} className="isOpen">
-        <ModalBody>
-          <fieldset>
-            <div className="formgrid">
-              <input
-                type="text"
-                required
-                className="form-control"
-                onChange={this.handleFieldChange}
-                id="editedIdea"
-                value={this.state.editedIdea}
-              />
+  render() {
+    return (
+      <div>
+        <Button onClick={this.toggle}>Edit Board</Button>
+        <Modal isOpen={this.state.isModalOpen} toggle={this.toggle} className="isOpen">
+          <ModalBody>
+            <fieldset>
               <label htmlFor="editedId">Edit your idea!</label>
-            </div>
-          </fieldset>
-        </ModalBody>
-        <ModalFooter>
-          <Button color="primary" disabled={this.state.loadingStatus} onClick={this.insertEdit}>Confirm</Button>{' '}
-          <Button color="secondary" onClick={this.toggle}>Cancel</Button>
-        </ModalFooter>
-      </Modal>
-    </div>
-  )
+              <div className="formgrid">
+                <input
+                  type="text"
+                  required
+                  className="form-control"
+                  onChange={this.handleFieldChange}
+                  id="editedSubject"
+                  value={this.state.editedSubject}
+                />
+                <FormGroup tag="fieldset">
+                  <FormGroup check>
+                    <Label check>
+                      <Input type="radio" 
+                      name="stateradio" 
+                      id="stateChange" 
+                      onClick = {this.handleFieldChange}
+                      value = "1"/>{' '}
+                      Open for ideas!
+                    </Label>
+                  </FormGroup>
+                  <FormGroup check>
+                    <Label check>
+                      <Input type="radio" 
+                      name="stateradio" 
+                      id="stateChange" 
+                      onClick = {this.handleFieldChange}
+                      value = "2"/>{' '}
+                      Open for votes!
+                    </Label>
+                  </FormGroup>
+                  <FormGroup check>
+                    <Label check>
+                      <Input type="radio" 
+                      name="stateradio" 
+                      id ="stateChange" 
+                      onClick = {this.handleFieldChange}
+                      value = "3"/>{' '}
+                      Close
+                    </Label>
+                  </FormGroup>
+                </FormGroup>
+              </div>
+            </fieldset>
+          </ModalBody>
+          <ModalFooter>
+            <Button color="primary" disabled={this.state.loadingStatus} onClick={this.insertEdit}>Confirm</Button>{' '}
+            <Button color="secondary" onClick={this.toggle}>Cancel</Button>
+          </ModalFooter>
+        </Modal>
+      </div>
+    )
   }
 }
 

@@ -55,7 +55,7 @@
 }
 
 .disabled{
-    filter: grayscale(100%);
+    filter: grayscale(50%);
 }
 
 .button-container{

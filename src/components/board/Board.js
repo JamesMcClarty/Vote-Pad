@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
 import BoardIdeaCard from './BoardIdeaCard'
 import IdeaForm from './IdeaForm'
-
+import EditBoardForm from './EditBoardForm'
 import './Board.css'
 
 
@@ -12,42 +12,44 @@ class Board extends Component {
     state = {
         subjectName: "",
         subjectEmail: "",
+        userId: 0,
         userName: "",
         ideas: [],
         boardState: "",
         boardStateId: 0,
+        boardDate: "",
         showSelected: false
     };
 
     componentDidMount() {
         APIManager.getOneExpandAndEmbed("boards", this.props.match.params.boardId, "ideas", "user")
             .then((data) => {
-                this.setState({subjectName: data.subjectName, userName: data.user.username, subjectEmail: data.user.email, ideas: data.ideas })
+                this.setState({ subjectName: data.subjectName, userName: data.user.username, subjectEmail: data.user.email, userId: data.user.id, ideas: data.ideas })
                 APIManager.getOneDataExpandAnother("boards", this.props.match.params.boardId, "boardstate")
                     .then((newData) => {
-                        this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id })
+                        this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id, boardDate: newData.dateCreated })
                     })
             })
     }
 
     deleteIdea = ideaId => {
         APIManager.delete("ideas", ideaId)
-        .then(() =>{
-            APIManager.getOneDataEmbedAnother("boards", this.props.match.params.boardId, "ideas")
-            .then(data => {
-                this.setState({ideas:data.ideas})
-                APIManager.getOneDataExpandAnother("boards", this.props.match.params.boardId, "boardstate")
-                    .then((newData) => {
-                        this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id })
+            .then(() => {
+                APIManager.getOneDataEmbedAnother("boards", this.props.match.params.boardId, "ideas")
+                    .then(data => {
+                        this.setState({ ideas: data.ideas })
+                        APIManager.getOneDataExpandAnother("boards", this.props.match.params.boardId, "boardstate")
+                            .then((newData) => {
+                                this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id })
+                            })
                     })
             })
-        })
     }
 
-    reload = () =>{
+    reload = () => {
         APIManager.getOneDataEmbedAnother("boards", this.props.match.params.boardId, "ideas")
             .then(data => {
-                this.setState({ideas:data.ideas})
+                this.setState({ ideas: data.ideas })
                 APIManager.getOneDataExpandAnother("boards", this.props.match.params.boardId, "boardstate")
                     .then((newData) => {
                         this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id })
@@ -93,11 +95,18 @@ class Board extends Component {
 
                             {isCurrentBoardUser ? (
                                 <>
-                                    <button className="">Edit Board</button>
+                                    <EditBoardForm subjectName={this.state.subjectName}
+                                        boardState={this.state.boardStateId}
+                                        boardDate = {this.state.boardDate}
+                                        userId={this.state.userId}
+                                        reload={this.reload}
+                                        boardId={this.props.match.params.boardId} />
                                 </>
                             ) : (
                                     <>
-                                        <IdeaForm email={currentUser.email} boardId={this.state.boardStateId} reload ={this.reload} {...this.props}/>
+                                        <IdeaForm email={currentUser.email} 
+                                        boardId={this.state.boardStateId} 
+                                        reload={this.reload} {...this.props} />
                                     </>
                                 )}
                         </div>
@@ -105,12 +114,12 @@ class Board extends Component {
                     <div className="note-board">
                         {ideasChose.map(idea => <BoardIdeaCard
                             key={idea.id}
-                            idea={idea} 
+                            idea={idea}
                             boardState={this.state.boardStateId}
                             isCurrentBoardUser={isCurrentBoardUser}
                             subjectEmail={this.state.subjectEmail}
                             deleteIdea={this.deleteIdea}
-                            reload = {this.reload}
+                            reload={this.reload}
                             {...this.props} />)}
                     </div>
                 </div>

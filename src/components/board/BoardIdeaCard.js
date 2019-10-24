@@ -175,7 +175,7 @@ class BoardIdeaCard extends Component {
                     <div className="idea-footer">
                         <div className="mark-containers">
                             <div className="checkmark-container">
-                                {this.state.currentPoster !== this.state.userLoggedIn ?(
+                                {this.state.currentPoster !== this.state.userLoggedIn && this.props.boardState === 2 ?(
                                 <button className="checkmark" onClick={this.voteUp}></button>
                                 )
                                 :(
@@ -184,7 +184,7 @@ class BoardIdeaCard extends Component {
                                 <p className="checkmark-votes">{upvotes}</p>
                             </div>
                             <div className="xmark-container">
-                            {this.state.currentPoster !== this.state.userLoggedIn ?(
+                            {this.state.currentPoster !== this.state.userLoggedIn && this.props.boardState === 2 ?(
                                 <button className="xmark" onClick={this.voteDown}></button>
                                 )
                                 :(

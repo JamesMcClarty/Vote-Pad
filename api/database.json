@@ -26,8 +26,8 @@
     {
       "id": 1,
       "userId": 1,
-      "subjectName": "What to put in my pie?",
       "dateCreated": "Currentdate",
+      "subjectName": "What to put in my cake?",
       "boardstateId": 1
     },
     {
@@ -55,10 +55,24 @@
     },
     {
       "userId": 2,
-      "boardId": 1,
+      "boardId": 3,
       "description": "Vanilla",
       "isChosen": false,
-      "id": 3
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "boardId": 1,
+      "description": "dfsaffdasfasf",
+      "isChosen": false,
+      "id": 5
+    },
+    {
+      "id": 6,
+      "userId": 2,
+      "boardId": 2,
+      "description": "dsfafaf",
+      "isChosen": false
     }
   ],
   "votes": [

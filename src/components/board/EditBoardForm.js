@@ -1,7 +1,7 @@
 /* eslint react/no-multi-comp: 0, react/prop-types: 0 */
 
 import React, { Component } from 'react';
-import { Button, Modal, ModalHeader, ModalBody, ModalFooter, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Button, Modal, ModalBody, ModalFooter, FormGroup, Label, Input } from 'reactstrap';
 import APIManager from '../../modules/APIManager'
 
 class EditBoardForm extends Component {

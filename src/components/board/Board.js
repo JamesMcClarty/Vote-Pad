@@ -5,11 +5,17 @@ import BoardIdeaCard from './BoardIdeaCard'
 import IdeaForm from './IdeaForm'
 import EditBoardForm from './EditBoardForm'
 import './Board.css'
+//Alertify
+import alertify from 'alertifyjs'
+import './alertify.css'
+
 
 
 class Board extends Component {
 
     state = {
+        currentUserId: 0,
+        userMadeIdea: false,
         subjectName: "",
         subjectEmail: "",
         userId: 0,
@@ -19,17 +25,33 @@ class Board extends Component {
         boardStateId: 0,
         boardDate: "",
         showSelected: false
-    };
+    }
 
     componentDidMount() {
+        let returnedStorage = localStorage.getItem('credentials')
+        let currentUser = JSON.parse(returnedStorage)
         APIManager.getOneExpandAndEmbed("boards", this.props.match.params.boardId, "ideas", "user")
             .then((data) => {
                 this.setState({ subjectName: data.subjectName, userName: data.user.username, subjectEmail: data.user.email, userId: data.user.id, ideas: data.ideas })
                 APIManager.getOneDataExpandAnother("boards", this.props.match.params.boardId, "boardstate")
                     .then((newData) => {
                         this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id, boardDate: newData.dateCreated })
+                        APIManager.getAllByCondition("users", "email", currentUser.email)
+                            .then((data) => {
+                                console.log(data)
+                                this.setState({ currentUserId: data[0].id })
+                                APIManager.getAllByTwoConditions("ideas", "userId", this.state.currentUserId, "boardId", parseInt(this.props.match.params.boardId))
+                                    .then((results) => {
+                                        if (Object.keys(results).length !== 0) {
+                                            console.log(Object.keys(results).length)
+                                            this.setState({ userMadeIdea: true })
+                                        }
+                                    })
+                            })
                     })
             })
+
+
     }
 
     deleteIdea = ideaId => {
@@ -41,9 +63,28 @@ class Board extends Component {
                         APIManager.getOneDataExpandAnother("boards", this.props.match.params.boardId, "boardstate")
                             .then((newData) => {
                                 this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id })
+                                APIManager.getAllByTwoConditions("ideas", "userId", this.state.currentUserId, "boardId", parseInt(this.props.match.params.boardId))
+                                    .then((results) => {
+                                        if (Object.keys(results).length !== 0) {
+                                            this.setState({ userMadeIdea: true })
+                                        }
+                                        else {
+                                            this.setState({ userMadeIdea: false })
+                                        }
+                                    })
                             })
                     })
             })
+    }
+
+    checkIfMadeIdea = () => {
+        if (this.state.userMadeIdea === true) {
+            alertify.warning('Sorry, but you already made an idea.');
+            return false
+        }
+        else {
+            return true
+        }
     }
 
     reload = () => {
@@ -53,6 +94,15 @@ class Board extends Component {
                 APIManager.getOneDataExpandAnother("boards", this.props.match.params.boardId, "boardstate")
                     .then((newData) => {
                         this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id })
+                        APIManager.getAllByTwoConditions("ideas", "userId", this.state.currentUserId, "boardId", parseInt(this.props.match.params.boardId))
+                            .then((results) => {
+                                if (Object.keys(results).length !== 0) {
+                                    this.setState({ userMadeIdea: true })
+                                }
+                                else {
+                                    this.setState({ userMadeIdea: false })
+                                }
+                            })
                     })
             })
     }
@@ -97,16 +147,19 @@ class Board extends Component {
                                 <>
                                     <EditBoardForm subjectName={this.state.subjectName}
                                         boardState={this.state.boardStateId}
-                                        boardDate = {this.state.boardDate}
+                                        boardDate={this.state.boardDate}
                                         userId={this.state.userId}
                                         reload={this.reload}
                                         boardId={this.props.match.params.boardId} />
                                 </>
                             ) : (
                                     <>
-                                        <IdeaForm email={currentUser.email} 
-                                        boardId={this.state.boardStateId} 
-                                        reload={this.reload} {...this.props} />
+                                        <IdeaForm email={currentUser.email}
+
+                                            boardId={parseInt(this.props.match.params.boardId)}
+                                            reload={this.reload}
+                                            checkIfMadeIdea={this.checkIfMadeIdea}
+                                            {...this.props} />
                                     </>
                                 )}
                         </div>

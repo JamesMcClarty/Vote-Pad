@@ -7,7 +7,7 @@ import './Home.css'
 class Home extends Component {
 
     state = {
-        boards: []
+        boards: [],
     };
 
 

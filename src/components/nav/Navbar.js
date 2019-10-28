@@ -33,7 +33,7 @@ class NavBar extends Component {
                                 <>
                                     <DropdownItem><Link className="nav-link" to="/myboards">My Boards</Link></DropdownItem>
                                     <DropdownItem><Link className="nav-link" to="/boardlist">Board List</Link></DropdownItem>
-                                    <DropdownItem>My Ideas</DropdownItem>
+                                    <DropdownItem><Link className="nav-link" to="/myideas">Board List</Link></DropdownItem>
                                     <DropdownItem divider />
                                     <DropdownItem>Log Out</DropdownItem>
                                 </>

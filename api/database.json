@@ -26,9 +26,8 @@
     {
       "id": 1,
       "userId": 1,
-      "dateCreated": "Currentdate",
       "subjectName": "What to put in my cake?",
-      "boardstateId": 1
+      "boardstateId": 3
     },
     {
       "id": 2,
@@ -51,7 +50,7 @@
       "userId": 3,
       "boardId": 1,
       "description": "Apple",
-      "isChosen": false
+      "isChosen": true
     },
     {
       "userId": 2,

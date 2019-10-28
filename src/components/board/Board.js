@@ -157,10 +157,9 @@ class Board extends Component {
                                     </>
                                 )}
 
-                            {stateNum === 1 ? (
+                            {stateNum === 1 && !isCurrentBoardUser ? (
                                 <>
                                     <IdeaForm email={currentUser.email}
-
                                         boardId={parseInt(this.props.match.params.boardId)}
                                         reload={this.reload}
                                         checkIfMadeIdea={this.checkIfMadeIdea}

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
 import EditIdeaForm from './EditIdeaForm'
+import alertify from 'alertifyjs'
+import './alertify.css'
 
 class BoardIdeaCard extends Component {
 
@@ -24,6 +26,27 @@ class BoardIdeaCard extends Component {
                         this.setState({ currentPoster: data.user.email, userName: data.user.username, userId: data.user.id })
                     })
             })
+    }
+
+    acceptIdea = () => {
+        alertify.confirm("This is a confirm dialog.", this.confirmAccept,
+            function () {
+                
+            });
+    }
+
+    confirmAccept =()=>{
+        const editedObject ={
+            id: this.props.idea.id,
+            userId: this.props.idea.userId,
+            boardId: this.props.idea.boardId,
+            description: this.props.idea.description,
+            "isChosen": true
+          }    
+          APIManager.update("ideas", editedObject)
+          .then(() =>{
+          this.props.reload();
+          })
     }
 
     voteUp = () => {
@@ -120,11 +143,11 @@ class BoardIdeaCard extends Component {
     implementStateButtons() {
         if (!this.props.idea.isChosen) {
             if (this.props.isCurrentBoardUser && this.props.boardState !== 1) {
-                return <button className="footer-button">Accept Idea</button>
+                return <button className="footer-button" onClick={this.acceptIdea}>Accept Idea</button>
             }
             else if (!this.props.isCurrentBoardUser && this.props.boardState === 1 && this.state.currentPoster === this.state.userLoggedIn) {
                 return <>
-                    <EditIdeaForm idea = {this.props.idea} reload = {this.props.reload}/>
+                    <EditIdeaForm idea={this.props.idea} reload={this.props.reload} />
                     <button className="footer-button" onClick={() => this.props.deleteIdea(this.props.idea.id)}>Delete</button>
                 </>
             }
@@ -175,21 +198,21 @@ class BoardIdeaCard extends Component {
                     <div className="idea-footer">
                         <div className="mark-containers">
                             <div className="checkmark-container">
-                                {this.state.currentPoster !== this.state.userLoggedIn && this.props.boardState === 2 ?(
-                                <button className="checkmark" onClick={this.voteUp}></button>
+                                {this.state.currentPoster !== this.state.userLoggedIn && this.props.boardState === 2 ? (
+                                    <button className="checkmark" onClick={this.voteUp}></button>
                                 )
-                                :(
-                                    <button className="checkmark disabled"></button>
-                                )}
+                                    : (
+                                        <button className="checkmark disabled"></button>
+                                    )}
                                 <p className="checkmark-votes">{upvotes}</p>
                             </div>
                             <div className="xmark-container">
-                            {this.state.currentPoster !== this.state.userLoggedIn && this.props.boardState === 2 ?(
-                                <button className="xmark" onClick={this.voteDown}></button>
+                                {this.state.currentPoster !== this.state.userLoggedIn && this.props.boardState === 2 ? (
+                                    <button className="xmark" onClick={this.voteDown}></button>
                                 )
-                                :(
-                                    <button className="xmark disabled"></button>
-                                )}
+                                    : (
+                                        <button className="xmark disabled"></button>
+                                    )}
                                 <p className="xmark-votes">{downvotes}</p>
                             </div>
                         </div>

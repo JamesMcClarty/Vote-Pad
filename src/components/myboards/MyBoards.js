@@ -43,6 +43,10 @@ class MyBoards extends Component {
             })
     }
 
+    sendAlertify = (message) =>{
+        alertify.warning(message)
+    }
+
     searchForBoards = () => {
         if(this.state.searchText === ""){
             alertify.warning("Please type in something in the search.")
@@ -73,7 +77,7 @@ class MyBoards extends Component {
                         </div>
 
                         <div className="addboard-container">
-                            <AddBoardForm userId = {this.state.userId} reload = {this.reload} {...this.props}/>
+                            <AddBoardForm key = {this.state.userId + "addbutton"} userId = {this.state.userId} reload = {this.reload} sendAlertify = {this.sendAlertify} {...this.props}/>
                         </div>
 
                     </div>

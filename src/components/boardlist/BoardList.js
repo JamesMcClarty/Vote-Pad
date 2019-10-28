@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
-import MyBoardCard from './MyBoardCard'
-import MyBoardIdeaCard from './MyBoardIdeaCard'
-import AddBoardForm from './AddBoardForm'
+import BoardListCard from './BoardListCard'
+import MyBoardIdeaCard from '../myboards/MyBoardIdeaCard'
 import './MyBoards.css'
 //Alertify
 import alertify from 'alertifyjs'
 import '../../alertify.css'
 
 
-class MyBoards extends Component {
+
+
+class BoardList extends Component {
 
     state = {
         userId: 0,
@@ -24,7 +25,7 @@ class MyBoards extends Component {
     }
 
     reload = () => {
-        APIManager.getAllByConditionAndExpand("boards", "userId", this.state.userId, "user")
+        APIManager.getAllByConditionAndExpand("boards", "userId_ne", this.state.userId, "user")
                     .then((boards) => {
                         this.setState({ boardList: boards })
                     })
@@ -36,15 +37,11 @@ class MyBoards extends Component {
         APIManager.getAllByCondition("users", "email", currentUser.email)
             .then((users) => {
                 this.setState({ userId: users[0].id })
-                APIManager.getAllByConditionAndExpand("boards", "userId", this.state.userId, "user")
+                APIManager.getAllByConditionAndExpand("boards", "userId_ne", this.state.userId, "user")
                     .then((boards) => {
                         this.setState({ boardList: boards })
                     })
             })
-    }
-
-    sendAlertify = (message) =>{
-        alertify.warning(message)
     }
 
     searchForBoards = () => {
@@ -57,7 +54,7 @@ class MyBoards extends Component {
         APIManager.getAllByCondition("users", "email", currentUser.email)
             .then((users) => {
                 this.setState({ userId: users[0].id })
-                APIManager.getAllByTwoConditionsAndExpand("boards", "userId", this.state.userId, "subjectName_like", this.state.searchText, "user")
+                APIManager.getAllByTwoConditionsAndExpand("boards", "userId_ne", this.state.userId, "subjectName_like", this.state.searchText, "user")
                     .then((boards) => {
                         this.setState({ boardList: boards })
                     })
@@ -75,19 +72,15 @@ class MyBoards extends Component {
                             <input className="searchbar" type="text" onChange={this.handleFieldChange} id = "searchText"/>
                             <button className="search-button" onClick={this.searchForBoards}>Search</button>
                         </div>
-
-                        <div className="addboard-container">
-                            <AddBoardForm key = {this.state.userId + "addbutton"} userId = {this.state.userId} reload = {this.reload} sendAlertify = {this.sendAlertify} {...this.props}/>
-                        </div>
-
                     </div>
                     <div className="myboards-body">
                         <div className="board-card-container">
                             {this.state.boardList.map(board =>
                                 <>
                                     <div className="board-card">
-                                        <MyBoardCard key={board.id + "boardCard"}
+                                        <BoardListCard key={board.id + "boardCard"}
                                             board={board}
+                                            userId={this.state.userId}
                                             {...this.props} />
                                         <MyBoardIdeaCard key={board.id + "boardIdeaCard"} boardId={board.id} {...this.props} />
                                     </div>
@@ -101,4 +94,4 @@ class MyBoards extends Component {
     }
 }
 
-export default MyBoards
+export default BoardList

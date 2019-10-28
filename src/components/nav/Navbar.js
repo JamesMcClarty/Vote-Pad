@@ -32,7 +32,7 @@ class NavBar extends Component {
                     {this.props.userLogged ? (
                                 <>
                                     <DropdownItem><Link className="nav-link" to="/myboards">My Boards</Link></DropdownItem>
-                                    <DropdownItem>Board List</DropdownItem>
+                                    <DropdownItem><Link className="nav-link" to="/boardlist">Board List</Link></DropdownItem>
                                     <DropdownItem>My Ideas</DropdownItem>
                                     <DropdownItem divider />
                                     <DropdownItem>Log Out</DropdownItem>

@@ -86,6 +86,12 @@
       "ideaId": 2,
       "userId": 3,
       "typeId": 1
+    },
+    {
+      "id": 4,
+      "ideaId": 4,
+      "userId": 2,
+      "typeId": 1
     }
   ],
   "types": [

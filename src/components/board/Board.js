@@ -6,7 +6,7 @@ import EditBoardForm from './EditBoardForm'
 import './Board.css'
 //Alertify
 import alertify from 'alertifyjs'
-import './alertify.css'
+import '../../alertify.css'
 
 
 

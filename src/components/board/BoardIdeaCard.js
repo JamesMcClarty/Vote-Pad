@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
 import EditIdeaForm from './EditIdeaForm'
+//Alertify
 import alertify from 'alertifyjs'
-import './alertify.css'
+import '../../alertify.css'
 
 class BoardIdeaCard extends Component {
 

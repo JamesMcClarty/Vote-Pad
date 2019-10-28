@@ -1,4 +1,3 @@
-import ReactDOM from 'react-dom'
 import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
 import BoardIdeaCard from './BoardIdeaCard'
@@ -127,6 +126,7 @@ class Board extends Component {
         let returnedStorage = localStorage.getItem('credentials')
         let currentUser = JSON.parse(returnedStorage)
         const isCurrentBoardUser = currentUser.email === this.state.subjectEmail
+        const stateNum = this.state.boardStateId
 
         return (
             <article className="board-containter">
@@ -154,13 +154,19 @@ class Board extends Component {
                                 </>
                             ) : (
                                     <>
-                                        <IdeaForm email={currentUser.email}
-
-                                            boardId={parseInt(this.props.match.params.boardId)}
-                                            reload={this.reload}
-                                            checkIfMadeIdea={this.checkIfMadeIdea}
-                                            {...this.props} />
                                     </>
+                                )}
+
+                            {stateNum === 1 && !isCurrentBoardUser ? (
+                                <>
+                                    <IdeaForm email={currentUser.email}
+                                        boardId={parseInt(this.props.match.params.boardId)}
+                                        reload={this.reload}
+                                        checkIfMadeIdea={this.checkIfMadeIdea}
+                                        {...this.props} />
+                                </>
+                            ) : (
+                                    <></>
                                 )}
                         </div>
                     </div>

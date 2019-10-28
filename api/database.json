@@ -26,23 +26,22 @@
     {
       "id": 1,
       "userId": 1,
-      "dateCreated": "Currentdate",
       "subjectName": "What to put in my cake?",
-      "boardstateId": 1
+      "boardstateId": 3
     },
     {
       "id": 2,
       "userId": 1,
       "subjectName": "What am I going to do with my life. Holy crap, someone help me AHHHHH?",
       "dateCreated": "Currentdate",
-      "boardstateId": 1
+      "boardstateId": 2
     },
     {
       "id": 3,
-      "userId": 1,
+      "userId": 3,
       "subjectName": "What to put in my pie?",
       "dateCreated": "Currentdate",
-      "boardstateId": 1
+      "boardstateId": 2
     }
   ],
   "ideas": [
@@ -51,7 +50,7 @@
       "userId": 3,
       "boardId": 1,
       "description": "Apple",
-      "isChosen": false
+      "isChosen": true
     },
     {
       "userId": 2,
@@ -61,18 +60,18 @@
       "id": 4
     },
     {
-      "userId": 2,
-      "boardId": 1,
-      "description": "dfsaffdasfasf",
-      "isChosen": false,
-      "id": 5
-    },
-    {
       "id": 6,
       "userId": 2,
       "boardId": 2,
       "description": "dsfafaf",
       "isChosen": false
+    },
+    {
+      "userId": 2,
+      "boardId": 1,
+      "description": "fdasfdfasfsasf",
+      "isChosen": false,
+      "id": 7
     }
   ],
   "votes": [

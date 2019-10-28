@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import { Link, withRouter } from "react-router-dom"
 import './Navbar.css'
 import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
-class Home extends Component {
+class NavBar extends Component {
     constructor(props) {
         super(props);
 
@@ -18,8 +19,6 @@ class Home extends Component {
         }));
     }
 
-    //<Link className="nav-link" to="/animals">Animals</Link>
-
     render() {
         return (
             <>
@@ -32,7 +31,7 @@ class Home extends Component {
                     <DropdownItem></DropdownItem>
                     {this.props.userLogged ? (
                                 <>
-                                    <DropdownItem>My Boards</DropdownItem>
+                                    <DropdownItem><Link className="nav-link" to="/myboards">My Boards</Link></DropdownItem>
                                     <DropdownItem>Board List</DropdownItem>
                                     <DropdownItem>My Ideas</DropdownItem>
                                     <DropdownItem divider />
@@ -67,4 +66,4 @@ class Home extends Component {
     }
 }
 
-export default Home
+export default withRouter(NavBar)

@@ -164,6 +164,18 @@
       "ideaId": 10,
       "userId": 6,
       "typeId": 1
+    },
+    {
+      "id": 10,
+      "ideaId": 10,
+      "userId": 3,
+      "typeId": 1
+    },
+    {
+      "id": 11,
+      "ideaId": 7,
+      "userId": 3,
+      "typeId": 2
     }
   ],
   "types": [

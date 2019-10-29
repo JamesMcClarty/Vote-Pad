@@ -37,12 +37,10 @@ class Board extends Component {
                         this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id, boardDate: newData.dateCreated })
                         APIManager.getAllByCondition("users", "email", currentUser.email)
                             .then((data) => {
-                                console.log(data)
                                 this.setState({ currentUserId: data[0].id })
                                 APIManager.getAllByTwoConditions("ideas", "userId", this.state.currentUserId, "boardId", parseInt(this.props.match.params.boardId))
                                     .then((results) => {
                                         if (Object.keys(results).length !== 0) {
-                                            console.log(Object.keys(results).length)
                                             this.setState({ userMadeIdea: true })
                                         }
                                     })
@@ -175,6 +173,7 @@ class Board extends Component {
                             key={idea.id}
                             idea={idea}
                             boardState={this.state.boardStateId}
+                            currentUserId = {this.state.currentUserId}
                             isCurrentBoardUser={isCurrentBoardUser}
                             subjectEmail={this.state.subjectEmail}
                             deleteIdea={this.deleteIdea}

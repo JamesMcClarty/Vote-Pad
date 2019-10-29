@@ -12,7 +12,6 @@ class BoardIdeaCard extends Component {
         currentPoster: "",
         userLoggedIn: "",
         userName: "",
-        userId: 0
     }
 
     componentDidMount() {
@@ -24,7 +23,7 @@ class BoardIdeaCard extends Component {
                 this.setState({ votes: data.votes })
                 APIManager.getOneDataExpandAnother("ideas", this.props.idea.id, "user")
                     .then(data => {
-                        this.setState({ currentPoster: data.user.email, userName: data.user.username, userId: data.user.id })
+                        this.setState({ currentPoster: data.user.email, userName: data.user.username})
                     })
             })
     }
@@ -53,7 +52,7 @@ class BoardIdeaCard extends Component {
     voteUp = () => {
         var alreadyVoted = false;
         this.state.votes.forEach(vote => {
-            if (this.state.userId === vote.userId) {
+            if (this.props.currentUserId === vote.userId) {
                 alreadyVoted = true;
                 if (vote.typeId === 2) {
                     const editedObject = {
@@ -78,7 +77,7 @@ class BoardIdeaCard extends Component {
         if (alreadyVoted === false) {
             const newObject = {
                 ideaId: this.props.idea.id,
-                userId: this.state.userId,
+                userId: this.props.currentUserId,
                 typeId: 1
             }
             APIManager.post("votes", newObject)
@@ -99,7 +98,7 @@ class BoardIdeaCard extends Component {
     voteDown = () => {
         var alreadyVoted = false;
         this.state.votes.forEach(vote => {
-            if (this.state.userId === vote.userId) {
+            if (this.props.currentUserId === vote.userId) {
                 alreadyVoted = true;
                 if (vote.typeId === 1) {
                     const editedObject = {
@@ -124,7 +123,7 @@ class BoardIdeaCard extends Component {
         if (alreadyVoted === false) {
             const newObject = {
                 ideaId: this.props.idea.id,
-                userId: this.state.userId,
+                userId: this.props.currentUserId,
                 typeId: 2
             }
             APIManager.post("votes", newObject)

@@ -6,6 +6,7 @@ import Board from './components/board/Board'
 import BoardList from './components/boardlist/BoardList'
 import MyBoards from './components/myboards/MyBoards'
 import MyIdeas from './components/myideas/MyIdeas'
+import Registration from './components/auth/Registration'
 
 class AppView extends Component {
 
@@ -13,16 +14,19 @@ class AppView extends Component {
         console.log(this.props.user)
         return (
             <>
-                <Route exact path="/login" render={(props) => {
-                    return <Login {...props} setUser={this.props.setUser}/>
-                }} />
-
+                
                 <Route exact path="/" render={(props) => {
                     if (this.props.user) {
                         return <Home {...props} />
                     } else {
                         return <Redirect to="/login" />
                     }
+                }} />
+                <Route exact path="/login" render={(props) => {
+                    return <Login {...props} setUser={this.props.setUser}/>
+                }} />
+                <Route exact path="/register" render={(props) => {
+                    return <Registration {...props} setUser={this.props.setUser}/>
                 }} />
 
                 <Route exact path="/boards/:boardId(\d+)/details" render={(props) => {

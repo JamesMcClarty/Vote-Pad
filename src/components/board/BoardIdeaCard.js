@@ -203,7 +203,7 @@ class BoardIdeaCard extends Component {
                                     <button className="checkmark" onClick={this.voteUp}></button>
                                 )
                                     : (
-                                        <button className="checkmark disabled"></button>
+                                        <button className="checkmark disabled" disabled = {true}></button>
                                     )}
                                 <p className="checkmark-votes">{upvotes}</p>
                             </div>
@@ -212,7 +212,7 @@ class BoardIdeaCard extends Component {
                                     <button className="xmark" onClick={this.voteDown}></button>
                                 )
                                     : (
-                                        <button className="xmark disabled"></button>
+                                        <button className="xmark disabled" disabled = {true}></button>
                                     )}
                                 <p className="xmark-votes">{downvotes}</p>
                             </div>

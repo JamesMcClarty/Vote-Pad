@@ -20,6 +20,20 @@
       "username": "LibJib",
       "email": "libbiebullock@gmail.com",
       "password": "1234"
+    },
+    {
+      "id": 4,
+      "name": "Jim McClarty",
+      "username": "JimSalvation",
+      "email": "jimmcclarty@gmail.com",
+      "password": "1234"
+    },
+    {
+      "id": 5,
+      "name": "Tallulah",
+      "username": "sillycauscaus",
+      "email": "tallulah@gmail.com",
+      "password": "1234"
     }
   ],
   "boards": [
@@ -31,17 +45,17 @@
     },
     {
       "id": 2,
-      "userId": 1,
+      "userId": 2,
       "subjectName": "What am I going to do with my life. Holy crap, someone help me AHHHHH?",
       "dateCreated": "Currentdate",
-      "boardstateId": 2
+      "boardstateId": 1
     },
     {
       "id": 3,
       "userId": 3,
       "subjectName": "What to put in my pie?",
       "dateCreated": "Currentdate",
-      "boardstateId": 2
+      "boardstateId": 1
     }
   ],
   "ideas": [
@@ -72,6 +86,20 @@
       "description": "fdasfdfasfsasf",
       "isChosen": false,
       "id": 7
+    },
+    {
+      "userId": 1,
+      "boardId": 3,
+      "description": "Cream Cheese",
+      "isChosen": false,
+      "id": 8
+    },
+    {
+      "userId": 1,
+      "boardId": 2,
+      "description": "Get help, man!",
+      "isChosen": false,
+      "id": 9
     }
   ],
   "votes": [
@@ -92,6 +120,24 @@
       "ideaId": 4,
       "userId": 2,
       "typeId": 1
+    },
+    {
+      "id": 5,
+      "ideaId": 8,
+      "userId": 5,
+      "typeId": 1
+    },
+    {
+      "id": 6,
+      "ideaId": 8,
+      "userId": 4,
+      "typeId": 2
+    },
+    {
+      "ideaId": 6,
+      "userId": 2,
+      "typeId": 1,
+      "id": 7
     }
   ],
   "types": [

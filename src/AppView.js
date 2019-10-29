@@ -5,6 +5,7 @@ import Home from './components/home/Home'
 import Board from './components/board/Board'
 import BoardList from './components/boardlist/BoardList'
 import MyBoards from './components/myboards/MyBoards'
+import MyIdeas from './components/myideas/MyIdeas'
 
 class AppView extends Component {
 
@@ -43,6 +44,14 @@ class AppView extends Component {
                 <Route exact path="/boardlist" render={(props) => {
                     if (this.props.user) {
                         return <BoardList {...props}/>
+                    }
+                    else {
+                        return <Redirect to="/login" />
+                    }
+                }}/>
+                <Route exact path="/myideas" render={(props) => {
+                    if (this.props.user) {
+                        return <MyIdeas {...props}/>
                     }
                     else {
                         return <Redirect to="/login" />

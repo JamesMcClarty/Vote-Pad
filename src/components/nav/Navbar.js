@@ -33,9 +33,9 @@ class NavBar extends Component {
                                 <>
                                     <DropdownItem><Link className="nav-link" to="/myboards">My Boards</Link></DropdownItem>
                                     <DropdownItem><Link className="nav-link" to="/boardlist">Board List</Link></DropdownItem>
-                                    <DropdownItem>My Ideas</DropdownItem>
+                                    <DropdownItem><Link className="nav-link" to="/myideas">My Ideas</Link></DropdownItem>
                                     <DropdownItem divider />
-                                    <DropdownItem>Log Out</DropdownItem>
+                                    <DropdownItem><Link className="nav-link" onClick ={this.props.logout} to="/login">Logout</Link></DropdownItem>
                                 </>
                             ) : (
                                     <>
@@ -51,7 +51,7 @@ class NavBar extends Component {
                     <div>
                         {this.props.userLogged ? (
                             <>
-                                <p>Log Out</p>
+                                <Link className="nav-link" onClick ={this.props.logout} to="/login">Logout</Link>
                             </>
                         ) : (
                                 <>

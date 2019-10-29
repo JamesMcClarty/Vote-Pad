@@ -16,7 +16,7 @@ class BoardListCard extends Component {
                 APIManager.getOne("boardstates", this.props.board.boardstateId)
                     .then(state => {
                         this.setState({ status: state.state })
-                        APIManager.getOne("users", this.props.userId)
+                        APIManager.getOne("users", this.props.board.userId)
                         .then(data =>{
                             this.setState({username:data.username})
                         })

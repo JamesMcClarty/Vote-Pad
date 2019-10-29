@@ -1,5 +1,7 @@
 import React, { Component } from "react"
 import { withRouter } from "react-router";
+import APIManager from "../../modules/APIManager";
+import alertify from 'alertifyjs'
 
 class Login extends Component {
 
@@ -18,14 +20,22 @@ class Login extends Component {
 
   handleLogin = (e) => {
     e.preventDefault()
-    let credentials = {email: this.state.email, password: this.state.password}
-    this.props.setUser(credentials);
-    this.props.history.push("/");
+    APIManager.getAllByTwoConditions("users", "email", this.state.email, "password", this.state.password)
+    .then(data => {
+      console.log(Object.keys(data).length)
+      if(Object.keys(data).length >= 1){
+        let credentials = {email: this.state.email, password: this.state.password}
+        this.props.setUser(credentials);
+        this.props.history.push("/");
+      }
+      else{
+        alertify.warning("User does not exist. Please try again or register.")
+      }
+    })
   }
 
   render() {
     return (
-      <form onSubmit={this.handleLogin}>
         <fieldset>
             <h3>Please sign in</h3>
             <div className="formgrid">
@@ -41,11 +51,10 @@ class Login extends Component {
                     required="" />
                 <label htmlFor="inputPassword">Password</label>
             </div>
-            <button type="submit">
+            <button onClick  = {this.handleLogin}>
                 Sign in
             </button>
         </fieldset>
-      </form>
     )
   }
 

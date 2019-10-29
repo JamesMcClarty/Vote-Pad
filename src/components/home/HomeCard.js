@@ -20,7 +20,6 @@ class HomeCard extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className="home-card">
                 <h4 className="card-subjectname">{this.props.board.subjectName}</h4>

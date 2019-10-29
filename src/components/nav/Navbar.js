@@ -39,8 +39,8 @@ class NavBar extends Component {
                                 </>
                             ) : (
                                     <>
-                                        <DropdownItem>Log in</DropdownItem>
-                                        <DropdownItem>Register</DropdownItem>
+                                        <DropdownItem><Link className="nav-link"  to="/login">Log In</Link></DropdownItem>
+                                        <DropdownItem><Link className="nav-link"  to="/register">Register</Link></DropdownItem>
                                     </>
                                 )}
                     </DropdownMenu>
@@ -55,8 +55,8 @@ class NavBar extends Component {
                             </>
                         ) : (
                                 <>
-                                    <p>Log in</p>
-                                    <p>Register</p>
+                                    <Link className="nav-link" to="/login">Log In</Link>
+                                    <Link className="nav-link" to="/register">Register</Link>
                                 </>
                             )}
                     </div>

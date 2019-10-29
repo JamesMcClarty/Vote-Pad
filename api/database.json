@@ -34,6 +34,13 @@
       "username": "sillycauscaus",
       "email": "tallulah@gmail.com",
       "password": "1234"
+    },
+    {
+      "name": "Brenda Long",
+      "username": "Blong",
+      "email": "Brenda@gmail.com",
+      "password": "1234",
+      "id": 6
     }
   ],
   "boards": [
@@ -41,7 +48,7 @@
       "id": 1,
       "userId": 1,
       "subjectName": "What to put in my cake?",
-      "boardstateId": 3
+      "boardstateId": 2
     },
     {
       "id": 2,
@@ -100,6 +107,13 @@
       "description": "Get help, man!",
       "isChosen": false,
       "id": 9
+    },
+    {
+      "userId": 6,
+      "boardId": 1,
+      "description": "Vanilla",
+      "isChosen": false,
+      "id": 10
     }
   ],
   "votes": [
@@ -138,6 +152,18 @@
       "userId": 2,
       "typeId": 1,
       "id": 7
+    },
+    {
+      "id": 8,
+      "ideaId": 7,
+      "userId": 2,
+      "typeId": 1
+    },
+    {
+      "id": 9,
+      "ideaId": 10,
+      "userId": 6,
+      "typeId": 1
     }
   ],
   "types": [

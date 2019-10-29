@@ -32,6 +32,9 @@ export default {
   getAllByTwoConditionsAndExpand(database, condition1 ,value1, condition2 ,value2, expand) {
     return fetch(`${remoteURL}/${database}?${condition1}=${value1}&${condition2}=${value2}&_expand=${expand}`).then(e => e.json())
   },
+  getAllByTwoConditionsAndEmbed(database, condition1 ,value1, condition2 ,value2, embed) {
+    return fetch(`${remoteURL}/${database}?${condition1}=${value1}&${condition2}=${value2}&_embed=${embed}`).then(e => e.json())
+  },
   getOneExpandAndEmbed(database, id, embed, expand) {
     return fetch(`${remoteURL}/${database}/${id}/?_embed=${embed}&_expand=${expand}`).then(e => e.json())
   },

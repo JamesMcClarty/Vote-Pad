@@ -34,12 +34,17 @@ class Votepad extends Component {
     })
   }
 
+  
+  logout = () =>{
+    localStorage.removeItem("credentials")
+    this.setState({user:localStorage.getItem("credentials") !== null})
+  }
 
 
   render() {
     return (
       <>
-        <Navbar userLogged={this.state.user} />
+        <Navbar userLogged={this.state.user} logout={this.logout}/>
         {this.state.user ? (
           <>
             <AppView setUser={this.setUser} user={this.state.user}/>

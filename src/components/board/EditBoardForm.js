@@ -30,9 +30,9 @@ class EditBoardForm extends Component {
     }
     APIManager.update("boards", editedBoard)
       .then(() => {
+        this.props.reload();
         this.toggle();
         this.setState({ loadingStatus: false })
-        this.props.reload();
       })
   }
 

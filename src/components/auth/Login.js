@@ -2,6 +2,8 @@ import React, { Component } from "react"
 import { withRouter } from "react-router";
 import APIManager from "../../modules/APIManager";
 import alertify from 'alertifyjs'
+import '../../alertify.css'
+import './auth.css'
 
 class Login extends Component {
 
@@ -21,40 +23,42 @@ class Login extends Component {
   handleLogin = (e) => {
     e.preventDefault()
     APIManager.getAllByTwoConditions("users", "email", this.state.email, "password", this.state.password)
-    .then(data => {
-      console.log(Object.keys(data).length)
-      if(Object.keys(data).length >= 1){
-        let credentials = {email: this.state.email, password: this.state.password}
-        this.props.setUser(credentials);
-        this.props.history.push("/");
-      }
-      else{
-        alertify.warning("User does not exist. Please try again or register.")
-      }
-    })
+      .then(data => {
+        if (Object.keys(data).length >= 1) {
+          let credentials = { email: this.state.email, password: this.state.password }
+          this.props.setUser(credentials);
+          this.props.history.push("/");
+        }
+        else {
+          alertify.warning("User does not exist. Please try again or register.")
+        }
+      })
   }
 
   render() {
     return (
-        <fieldset>
-            <h3>Please sign in</h3>
-            <div className="formgrid">
-                <input onChange={this.handleFieldChange} type="email"
-                    id="email"
-                    placeholder="Email address"
-                    required="" autoFocus="" />
-                <label htmlFor="inputEmail">Email address</label>
-
-                <input onChange={this.handleFieldChange} type="password"
-                    id="password"
-                    placeholder="Password"
-                    required="" />
-                <label htmlFor="inputPassword">Password</label>
-            </div>
-            <button onClick  = {this.handleLogin}>
-                Sign in
+      <fieldset>
+        <h3 className = "h3Login">Please sign in</h3>
+        <div className="login-formgrid">
+          <div className="input-field">
+            <label>Email address</label>
+            <input onChange={this.handleFieldChange} type="email"
+              id="email"
+              placeholder="Email address"
+              required="" autoFocus="" />
+          </div>
+          <div className="input-field">
+            <label>Password</label>
+            <input onChange={this.handleFieldChange} type="password"
+              id="password"
+              placeholder="Password"
+              required="" />
+          </div>
+          <button className="login-button" onClick={this.handleLogin}>
+          Sign in
             </button>
-        </fieldset>
+        </div>
+      </fieldset>
     )
   }
 

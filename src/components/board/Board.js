@@ -90,7 +90,8 @@ class Board extends Component {
                 this.setState({ ideas: data.ideas })
                 APIManager.getOneDataExpandAnother("boards", this.props.match.params.boardId, "boardstate")
                     .then((newData) => {
-                        this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id })
+                        console.log(newData.subjectName)
+                        this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id, subjectName: newData.subjectName})
                         APIManager.getAllByTwoConditions("ideas", "userId", this.state.currentUserId, "boardId", parseInt(this.props.match.params.boardId))
                             .then((results) => {
                                 if (Object.keys(results).length !== 0) {
@@ -173,7 +174,6 @@ class Board extends Component {
                             key={idea.id}
                             idea={idea}
                             boardState={this.state.boardStateId}
-                            currentUserId = {this.state.currentUserId}
                             isCurrentBoardUser={isCurrentBoardUser}
                             subjectEmail={this.state.subjectEmail}
                             deleteIdea={this.deleteIdea}

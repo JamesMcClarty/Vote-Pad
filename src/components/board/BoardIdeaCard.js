@@ -10,21 +10,33 @@ class BoardIdeaCard extends Component {
     state = {
         votes: [],
         currentPoster: "",
+        currentUserId: 0,
         userLoggedIn: "",
         userName: "",
-        userId: 0
+        votedOn: 0,
+        votedId: 0
     }
 
     componentDidMount() {
         let returnedStorage = localStorage.getItem('credentials')
         let currentUser = JSON.parse(returnedStorage)
         this.setState({ userLoggedIn: currentUser.email })
-        APIManager.getOneDataEmbedAnother("ideas", this.props.idea.id, "votes")
-            .then(data => {
-                this.setState({ votes: data.votes })
-                APIManager.getOneDataExpandAnother("ideas", this.props.idea.id, "user")
+        APIManager.getAllByCondition("users", "email", currentUser.email)
+            .then(users => {
+                this.setState({ currentUserId: users[0].id })
+                APIManager.getOneDataEmbedAnother("ideas", this.props.idea.id, "votes")
                     .then(data => {
-                        this.setState({ currentPoster: data.user.email, userName: data.user.username, userId: data.user.id })
+                        this.setState({ votes: data.votes })
+                        this.state.votes.forEach(vote => {
+                            console.log(vote.userId, this.state.currentUserId, vote)
+                            if (vote.userId === this.state.currentUserId) {
+                                this.setState({ votedOn: vote.typeId, votedId: vote.id })
+                            }
+                        })
+                        APIManager.getOneDataExpandAnother("ideas", this.props.idea.id, "user")
+                            .then(data => {
+                                this.setState({ currentPoster: data.user.email, userName: data.user.username })
+                            })
                     })
             })
     }
@@ -32,53 +44,81 @@ class BoardIdeaCard extends Component {
     acceptIdea = () => {
         alertify.confirm("This is a confirm dialog.", this.confirmAccept,
             function () {
-                
+
             });
     }
 
-    confirmAccept =()=>{
-        const editedObject ={
+    confirmAccept = () => {
+        const editedObject = {
             id: this.props.idea.id,
             userId: this.props.idea.userId,
             boardId: this.props.idea.boardId,
             description: this.props.idea.description,
             "isChosen": true
-          }    
-          APIManager.update("ideas", editedObject)
-          .then(() =>{
-          this.props.reload();
-          })
+        }
+        APIManager.update("ideas", editedObject)
+            .then(() => {
+                this.props.reload();
+            })
     }
 
     voteUp = () => {
-        var alreadyVoted = false;
-        this.state.votes.forEach(vote => {
-            if (this.state.userId === vote.userId) {
-                alreadyVoted = true;
-                if (vote.typeId === 2) {
-                    const editedObject = {
-                        id: vote.id,
-                        ideaId: vote.ideaId,
-                        userId: vote.userId,
-                        typeId: 1
-                    }
-                    APIManager.update("votes", editedObject).then(() => {
-                        APIManager.getOneDataEmbedAnother("ideas", this.props.idea.id, "votes")
+        if (this.state.votedOn === 1) {
+            APIManager.delete("votes", this.state.votedId).then(() => {
+                APIManager.getOneDataEmbedAnother("ideas", this.props.idea.id, "votes")
+                    .then(data => {
+                        if (Object.keys(data.votes).length !== 0) {
+                            this.setState({ votes: data.votes })
+                            this.state.votes.forEach(vote => {
+                                console.log(vote.userId, this.state.currentUserId, vote)
+                                if (vote.userId === this.state.currentUserId) {
+                                    this.setState({ votedOn: vote.typeId, votedId: vote.id })
+                                }
+                                else{
+                                    this.setState({ votedOn: 0, votedId: vote.id })
+                                }
+                            })
+                        }
+                        else {
+                            this.setState({ votes: data.votes, votedOn: 0, votedId: 0 })
+                        }
+                        APIManager.getOneDataExpandAnother("ideas", this.props.idea.id, "user")
                             .then(data => {
-                                this.setState({ votes: data.votes })
-                                APIManager.getOneDataExpandAnother("ideas", this.props.idea.id, "user")
-                                    .then(data => {
-                                        this.setState({ currentPoster: data.user.email, userName: data.user.username, userId: data.user.id })
-                                    })
+                                this.setState({ currentPoster: data.user.email, userName: data.user.username })
                             })
                     })
-                }
+            })
+        }
+
+        else if (this.state.votedOn === 2) {
+            const editedObject = {
+                id: this.state.votedId,
+                ideaId: this.props.idea.id,
+                userId: this.state.currentUserId,
+                typeId: 1
             }
-        })
-        if (alreadyVoted === false) {
+            APIManager.update("votes", editedObject).then(() => {
+                APIManager.getOneDataEmbedAnother("ideas", this.props.idea.id, "votes")
+                    .then(data => {
+                        this.setState({ votes: data.votes })
+                        this.state.votes.forEach(vote => {
+                            console.log(vote.userId, this.state.currentUserId, vote)
+                            if (vote.userId === this.state.currentUserId) {
+                                this.setState({ votedOn: vote.typeId, votedId: vote.id })
+                            }
+                        })
+                        APIManager.getOneDataExpandAnother("ideas", this.props.idea.id, "user")
+                            .then(data => {
+                                this.setState({ currentPoster: data.user.email, userName: data.user.username })
+                            })
+                    })
+            })
+        }
+
+        else {
             const newObject = {
                 ideaId: this.props.idea.id,
-                userId: this.state.userId,
+                userId: this.state.currentUserId,
                 typeId: 1
             }
             APIManager.post("votes", newObject)
@@ -86,45 +126,79 @@ class BoardIdeaCard extends Component {
                     APIManager.getOneDataEmbedAnother("ideas", this.props.idea.id, "votes")
                         .then(data => {
                             this.setState({ votes: data.votes })
+                            this.state.votes.forEach(vote => {
+                                console.log(vote.userId, this.state.currentUserId, vote)
+                                if (vote.userId === this.state.currentUserId) {
+                                    this.setState({ votedOn: vote.typeId, votedId: vote.id })
+                                }
+                            })
                             APIManager.getOneDataExpandAnother("ideas", this.props.idea.id, "user")
                                 .then(data => {
-                                    this.setState({ currentPoster: data.user.email, userName: data.user.username, userId: data.user.id })
+                                    this.setState({ currentPoster: data.user.email, userName: data.user.username })
                                 })
                         })
-                }
-                )
+                })
         }
     }
 
     voteDown = () => {
-        var alreadyVoted = false;
-        this.state.votes.forEach(vote => {
-            if (this.state.userId === vote.userId) {
-                alreadyVoted = true;
-                if (vote.typeId === 1) {
-                    const editedObject = {
-                        id: vote.id,
-                        ideaId: vote.ideaId,
-                        userId: vote.userId,
-                        typeId: 2
-                    }
-                    APIManager.update("votes", editedObject).then(() => {
-                        APIManager.getOneDataEmbedAnother("ideas", this.props.idea.id, "votes")
-                            .then(data => {
+        if (this.state.votedOn === 2) {
+            APIManager.delete("votes", this.state.votedId)
+                .then(t => {
+                    APIManager.getOneDataEmbedAnother("ideas", this.props.idea.id, "votes")
+                        .then(data => {
+                            console.log(Object.keys(data.votes).length)
+                            if (Object.keys(data.votes).length !== 0) {
                                 this.setState({ votes: data.votes })
-                                APIManager.getOneDataExpandAnother("ideas", this.props.idea.id, "user")
-                                    .then(data => {
-                                        this.setState({ currentPoster: data.user.email, userName: data.user.username, userId: data.user.id })
-                                    })
+                                this.state.votes.forEach(vote => {
+                                    console.log(vote.userId, this.state.currentUserId, vote)
+                                    if (vote.userId === this.state.currentUserId) {
+                                        this.setState({ votedOn: vote.typeId, votedId: vote.id })
+                                    }else{
+                                        this.setState({ votedOn: 0, votedId: vote.id })
+                                    }
+                                })
+                            }
+                            else {
+                                this.setState({ votes: data.votes, votedOn: 0, votedId: 0 })
+                            }
+                            APIManager.getOneDataExpandAnother("ideas", this.props.idea.id, "user")
+                                .then(data => {
+                                    this.setState({ currentPoster: data.user.email, userName: data.user.username })
+                                })
+                        })
+                })
+        }
+
+        else if (this.state.votedOn === 1) {
+            const editedObject = {
+                id: this.state.votedId,
+                ideaId: this.props.idea.id,
+                userId: this.state.currentUserId,
+                typeId: 2
+            }
+            APIManager.update("votes", editedObject).then(() => {
+                APIManager.getOneDataEmbedAnother("ideas", this.props.idea.id, "votes")
+                    .then(data => {
+                        this.setState({ votes: data.votes })
+                        this.state.votes.forEach(vote => {
+                            console.log(vote.userId, this.state.currentUserId, vote)
+                            if (vote.userId === this.state.currentUserId) {
+                                this.setState({ votedOn: vote.typeId, votedId: vote.id })
+                            }
+                        })
+                        APIManager.getOneDataExpandAnother("ideas", this.props.idea.id, "user")
+                            .then(data => {
+                                this.setState({ currentPoster: data.user.email, userName: data.user.username })
                             })
                     })
-                }
-            }
-        })
-        if (alreadyVoted === false) {
+            })
+        }
+
+        else {
             const newObject = {
                 ideaId: this.props.idea.id,
-                userId: this.state.userId,
+                userId: this.state.currentUserId,
                 typeId: 2
             }
             APIManager.post("votes", newObject)
@@ -132,14 +206,22 @@ class BoardIdeaCard extends Component {
                     APIManager.getOneDataEmbedAnother("ideas", this.props.idea.id, "votes")
                         .then(data => {
                             this.setState({ votes: data.votes })
+                            this.state.votes.forEach(vote => {
+                                console.log(vote.userId, this.state.currentUserId, vote)
+                                if (vote.userId === this.state.currentUserId) {
+                                    console.log(vote.typeId, vote.id)
+                                    this.setState({ votedOn: vote.typeId, votedId: vote.id })
+                                }
+                            })
                             APIManager.getOneDataExpandAnother("ideas", this.props.idea.id, "user")
                                 .then(data => {
-                                    this.setState({ currentPoster: data.user.email, userName: data.user.username, userId: data.user.id })
+                                    this.setState({ currentPoster: data.user.email, userName: data.user.username })
                                 })
                         })
                 })
         }
     }
+
 
     implementStateButtons() {
         if (!this.props.idea.isChosen) {
@@ -168,8 +250,10 @@ class BoardIdeaCard extends Component {
 
     render() {
 
+        
         var upvotes = 0;
         var downvotes = 0;
+        
         this.state.votes.forEach(vote => {
             if (vote.typeId === 1) {
                 upvotes++;
@@ -200,19 +284,19 @@ class BoardIdeaCard extends Component {
                         <div className="mark-containers">
                             <div className="checkmark-container">
                                 {this.state.currentPoster !== this.state.userLoggedIn && this.props.boardState === 2 ? (
-                                    <button className="checkmark" onClick={this.voteUp}></button>
+                                    <button className={"checkmark-"+this.state.votedOn} onClick={this.voteUp}></button>
                                 )
                                     : (
-                                        <button className="checkmark disabled" disabled = {true}></button>
+                                        <button className="checkmark-0 disabled" disabled={true}></button>
                                     )}
                                 <p className="checkmark-votes">{upvotes}</p>
                             </div>
                             <div className="xmark-container">
                                 {this.state.currentPoster !== this.state.userLoggedIn && this.props.boardState === 2 ? (
-                                    <button className="xmark" onClick={this.voteDown}></button>
+                                    <button className={"xmark-"+this.state.votedOn} onClick={this.voteDown}></button>
                                 )
                                     : (
-                                        <button className="xmark disabled" disabled = {true}></button>
+                                        <button className="xmark-0 disabled" disabled={true}></button>
                                     )}
                                 <p className="xmark-votes">{downvotes}</p>
                             </div>

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
 import MyIdeasCard from './MyIdeasCard'
-import './MyIdeas.css'
 //Alertify
 import alertify from 'alertifyjs'
 import '../../alertify.css'

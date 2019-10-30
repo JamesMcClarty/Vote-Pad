@@ -25,9 +25,9 @@ class MyBoards extends Component {
 
     reload = () => {
         APIManager.getAllByConditionAndExpand("boards", "userId", this.state.userId, "user")
-                    .then((boards) => {
-                        this.setState({ boardList: boards })
-                    })
+            .then((boards) => {
+                this.setState({ boardList: boards })
+            })
     }
 
     componentDidMount() {
@@ -43,25 +43,25 @@ class MyBoards extends Component {
             })
     }
 
-    sendAlertify = (message) =>{
+    sendAlertify = (message) => {
         alertify.warning(message)
     }
 
     searchForBoards = () => {
-        if(this.state.searchText === ""){
+        if (this.state.searchText === "") {
             alertify.warning("Please type in something in the search.")
         }
-        else{
-        let returnedStorage = localStorage.getItem('credentials')
-        let currentUser = JSON.parse(returnedStorage)
-        APIManager.getAllByCondition("users", "email", currentUser.email)
-            .then((users) => {
-                this.setState({ userId: users[0].id })
-                APIManager.getAllByTwoConditionsAndExpand("boards", "userId", this.state.userId, "subjectName_like", this.state.searchText, "user")
-                    .then((boards) => {
-                        this.setState({ boardList: boards })
-                    })
-            })
+        else {
+            let returnedStorage = localStorage.getItem('credentials')
+            let currentUser = JSON.parse(returnedStorage)
+            APIManager.getAllByCondition("users", "email", currentUser.email)
+                .then((users) => {
+                    this.setState({ userId: users[0].id })
+                    APIManager.getAllByTwoConditionsAndExpand("boards", "userId", this.state.userId, "subjectName_like", this.state.searchText, "user")
+                        .then((boards) => {
+                            this.setState({ boardList: boards })
+                        })
+                })
         }
     }
 
@@ -72,26 +72,24 @@ class MyBoards extends Component {
                     <div className="myboards-header">
 
                         <div className="searchbar-container">
-                            <input className="searchbar" type="text" onChange={this.handleFieldChange} id = "searchText"/>
+                            <input className="searchbar" type="text" onChange={this.handleFieldChange} id="searchText" />
                             <button className="search-button" onClick={this.searchForBoards}>Search</button>
                         </div>
 
                         <div className="addboard-container">
-                            <AddBoardForm key = {this.state.userId + "addbutton"} userId = {this.state.userId} reload = {this.reload} sendAlertify = {this.sendAlertify} {...this.props}/>
+                            <AddBoardForm key={this.state.userId + "addbutton"} userId={this.state.userId} reload={this.reload} sendAlertify={this.sendAlertify} {...this.props} />
                         </div>
 
                     </div>
                     <div className="myboards-body">
                         <div className="board-card-container">
                             {this.state.boardList.map(board =>
-                                <>
-                                    <div className="board-card">
-                                        <MyBoardCard key={board.id + "boardCard"}
-                                            board={board}
-                                            {...this.props} />
-                                        <MyBoardIdeaCard key={board.id + "boardIdeaCard"} boardId={board.id} {...this.props} />
-                                    </div>
-                                </>
+                                <div className="board-card" key={board.id + "container"}>
+                                    <MyBoardCard
+                                        board={board}
+                                        {...this.props} />
+                                    <MyBoardIdeaCard boardId={board.id} {...this.props} />
+                                </div>
                             )}
                         </div>
                     </div>

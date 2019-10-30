@@ -34,7 +34,7 @@ class NavBar extends Component {
                                     <DropdownItem><Link className="nav-link" to="/myboards">My Boards</Link></DropdownItem>
                                     <DropdownItem><Link className="nav-link" to="/boardlist">Board List</Link></DropdownItem>
                                     <DropdownItem><Link className="nav-link" to="/myideas">My Ideas</Link></DropdownItem>
-                                    <DropdownItem divider />
+                                    <DropdownItem divider /> 
                                     <DropdownItem><Link className="nav-link" onClick ={this.props.logout} to="/login">Logout</Link></DropdownItem>
                                 </>
                             ) : (
@@ -45,19 +45,18 @@ class NavBar extends Component {
                                 )}
                     </DropdownMenu>
                 </Dropdown>
-                    <div>
-                        <p>VOTEPAD</p>
-                    </div>
+                    <img className="nav-logo" src={require('../../websiteresources/votepad.png')} />
+                    
                     <div>
                         {this.props.userLogged ? (
-                            <>
+                            <div>
                                 <Link className="nav-link" onClick ={this.props.logout} to="/login">Logout</Link>
-                            </>
+                            </div>
                         ) : (
-                                <>
+                                <div>
                                     <Link className="nav-link" to="/login">Log In</Link>
                                     <Link className="nav-link" to="/register">Register</Link>
-                                </>
+                                </div>
                             )}
                     </div>
                 </div>

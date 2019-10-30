@@ -41,13 +41,34 @@
       "email": "Brenda@gmail.com",
       "password": "1234",
       "id": 6
+    },
+    {
+      "name": "Nate",
+      "username": "Natergator",
+      "email": "nate@gator.com",
+      "password": "1234",
+      "id": 7
+    },
+    {
+      "name": "dumbface",
+      "username": "dumbface",
+      "email": "dumbface@dumbface.com",
+      "password": "1234",
+      "id": 8
+    },
+    {
+      "name": "pumpkinMo",
+      "username": "pumpkinMo",
+      "email": "Mo@gmail.com",
+      "password": "1234",
+      "id": 9
     }
   ],
   "boards": [
     {
       "id": 1,
       "userId": 1,
-      "subjectName": "What to put in my cake?",
+      "subjectName": "What to put in my cake please please please?",
       "boardstateId": 2
     },
     {
@@ -63,6 +84,13 @@
       "subjectName": "What to put in my pie?",
       "dateCreated": "Currentdate",
       "boardstateId": 1
+    },
+    {
+      "userId": 1,
+      "dateCreated": "Oct 30th 2019",
+      "subjectName": "What should I do to make my capstone pretty?",
+      "boardstateId": 1,
+      "id": 4
     }
   ],
   "ideas": [
@@ -88,18 +116,11 @@
       "isChosen": false
     },
     {
+      "id": 7,
       "userId": 2,
       "boardId": 1,
       "description": "fdasfdfasfsasf",
-      "isChosen": false,
-      "id": 7
-    },
-    {
-      "userId": 1,
-      "boardId": 3,
-      "description": "Cream Cheese",
-      "isChosen": false,
-      "id": 8
+      "isChosen": true
     },
     {
       "userId": 1,
@@ -109,61 +130,44 @@
       "id": 9
     },
     {
+      "id": 10,
       "userId": 6,
       "boardId": 1,
       "description": "Vanilla",
+      "isChosen": true
+    },
+    {
+      "userId": 1,
+      "boardId": 3,
+      "description": "Choco",
       "isChosen": false,
-      "id": 10
+      "id": 11
     }
   ],
   "votes": [
     {
-      "id": 2,
-      "ideaId": 2,
-      "userId": 2,
-      "typeId": 2
+      "ideaId": 7,
+      "userId": 8,
+      "typeId": 2,
+      "id": 1
+    },
+    {
+      "ideaId": 7,
+      "userId": 9,
+      "typeId": 1,
+      "id": 2
     },
     {
       "id": 3,
-      "ideaId": 2,
-      "userId": 3,
+      "ideaId": 7,
+      "userId": 6,
       "typeId": 1
     },
     {
       "id": 4,
-      "ideaId": 4,
-      "userId": 2,
-      "typeId": 1
-    },
-    {
-      "id": 5,
-      "ideaId": 8,
-      "userId": 5,
-      "typeId": 1
-    },
-    {
-      "id": 6,
-      "ideaId": 8,
-      "userId": 4,
-      "typeId": 2
-    },
-    {
-      "ideaId": 6,
-      "userId": 2,
-      "typeId": 1,
-      "id": 7
-    },
-    {
-      "id": 8,
       "ideaId": 7,
-      "userId": 2,
-      "typeId": 1
-    },
-    {
-      "id": 9,
-      "ideaId": 10,
-      "userId": 6,
-      "typeId": 1
+      "userId": 1,
+      "typeId": 2
     }
   ],
   "types": [

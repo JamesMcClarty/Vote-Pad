@@ -1,0 +1,21 @@
+.login-formgrid{
+    display:flex;
+    flex-direction: column;
+    border:lightgray 1px solid;
+    padding: 2%;
+    margin: 2%;
+    width:auto;
+}
+.login-button{
+    width:auto;
+    max-width: 90px;
+}
+.h3Login{
+    padding: 2%;
+}
+.input-field{
+    max-width: 360px;
+    display: flex;
+    margin-top: 2px;
+    justify-content: space-between;
+}

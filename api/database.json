@@ -116,18 +116,11 @@
       "isChosen": false
     },
     {
+      "id": 7,
       "userId": 2,
       "boardId": 1,
       "description": "fdasfdfasfsasf",
-      "isChosen": false,
-      "id": 7
-    },
-    {
-      "userId": 1,
-      "boardId": 3,
-      "description": "Cream Cheese",
-      "isChosen": false,
-      "id": 8
+      "isChosen": true
     },
     {
       "userId": 1,
@@ -142,6 +135,13 @@
       "boardId": 1,
       "description": "Vanilla",
       "isChosen": true
+    },
+    {
+      "userId": 1,
+      "boardId": 3,
+      "description": "Choco",
+      "isChosen": false,
+      "id": 11
     }
   ],
   "votes": [
@@ -156,6 +156,18 @@
       "userId": 9,
       "typeId": 1,
       "id": 2
+    },
+    {
+      "id": 3,
+      "ideaId": 7,
+      "userId": 6,
+      "typeId": 1
+    },
+    {
+      "id": 4,
+      "ideaId": 7,
+      "userId": 1,
+      "typeId": 2
     }
   ],
   "types": [

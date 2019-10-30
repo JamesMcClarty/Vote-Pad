@@ -34,7 +34,7 @@ class NavBar extends Component {
                                     <DropdownItem><Link className="nav-link" to="/myboards">My Boards</Link></DropdownItem>
                                     <DropdownItem><Link className="nav-link" to="/boardlist">Board List</Link></DropdownItem>
                                     <DropdownItem><Link className="nav-link" to="/myideas">My Ideas</Link></DropdownItem>
-                                    <DropdownItem divider />
+                                    <DropdownItem divider /> 
                                     <DropdownItem><Link className="nav-link" onClick ={this.props.logout} to="/login">Logout</Link></DropdownItem>
                                 </>
                             ) : (

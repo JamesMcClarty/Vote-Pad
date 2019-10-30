@@ -43,11 +43,11 @@ class MyIdeasCard extends Component {
                     <div className="idea-footer">
                         <div className="mark-containers">
                             <div className="checkmark-container">
-                                <button className="checkmark" disabled = {true}></button>
+                                <button className="checkmark-0" disabled = {true}></button>
                                 <p className="checkmark-votes">{upvotes}</p>
                             </div>
                             <div className="xmark-container">
-                                <button className="xmark" disabled = {true}></button>
+                                <button className="xmark-0" disabled = {true}></button>
                                 <p className="xmark-votes">{downvotes}</p>
                             </div>
                             {this.props.idea.isChosen ?(

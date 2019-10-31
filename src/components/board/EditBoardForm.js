@@ -50,7 +50,7 @@ class EditBoardForm extends Component {
   render() {
     return (
       <div>
-        <Button onClick={this.toggle}>Edit Board</Button>
+        <Button className="editBoardButton" onClick={this.toggle}>Edit Board</Button>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggle} className="isOpen">
           <ModalBody>
             <fieldset>

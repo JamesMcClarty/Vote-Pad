@@ -25,8 +25,9 @@ class Home extends Component {
             <>
                 <article className="home-container">
                     <div className="home-image">
-                        <p> You're on home page!</p>
+                    <img className="main-logo" src={require('../../websiteresources/votepad.png')} />
                     </div>
+                    <h1 className = "home-popular">Most popular boards</h1>
                     <div className="home-boardlist">
                         {this.state.boards.map(board =>
                             <HomeCard key={board.id} board={board} {...this.props} />

@@ -1,11 +1,14 @@
 .note-board{
-    background-color: burlywood;
+    background-image: url(../../websiteresources/wooden-cork-board-seamless-tileable-texture-29991843.jpg);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: space-between;
     padding:2%;
-
+    border: 10px rgb(145, 101, 19) solid;
+    color:black;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 20px;
 }
 .idea-card{
     background-image: url('../../websiteresources/notepad.png');
@@ -47,9 +50,12 @@
 }
 .checkmark-container{
     display: flex;
+    font-size: 32px;
+    min-width: 120px;
 }
 .xmark-container{
     display: flex;
+    font-size: 32px;
 }
 .idea-header{
     height: 52px;
@@ -77,6 +83,37 @@
     filter: grayscale(50%);
 }
 
+.idea-card{
+    margin-bottom:7px;
+}
+
 .button-container{
     display: flex;
+}
+.board-containter{
+    background-color: rgb(83, 66, 66);
+    color:white;
+    font-family: 'Playfair Display', serif;
+}
+
+.note-board-header{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.board-tabs-container{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.editBoardButton, .addIdeaButton{
+    font-family: 'Permanent Marker', cursive;
+}
+
+.board-tab1, .board-tab2{
+    margin-left: 4px;
+    margin-right: 4px;
+    font-family: 'Permanent Marker', cursive;
 }

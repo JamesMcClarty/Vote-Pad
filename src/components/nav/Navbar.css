@@ -4,9 +4,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    background-color: rgb(224, 158, 120);
+    background-color: rgb(243, 188, 156);
 }
 
 .nav-logo{
     max-width: 200px;
+}
+
+.nav-link{
+    font-family: 'Permanent Marker', cursive;
 }

@@ -42,7 +42,7 @@ class BoardIdeaCard extends Component {
     }
 
     acceptIdea = () => {
-        alertify.confirm("This is a confirm dialog.", this.confirmAccept,
+        alertify.confirm("Are you sure? This cannot be undone!", this.confirmAccept,
             function () {
 
             });

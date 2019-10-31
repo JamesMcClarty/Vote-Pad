@@ -1,13 +1,15 @@
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",'Playfair Display', 'Permanent Marker',
+    sans-serif, serif, cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+  font-family: 'Playfair Display', 'Permanent Marker', Monaco, Consolas, serif, cursive "Courier New",
     monospace;
 }
+
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker|Playfair+Display&display=swap');

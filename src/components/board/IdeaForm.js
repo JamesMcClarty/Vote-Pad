@@ -55,7 +55,7 @@ class IdeaForm extends Component {
   render() {
     return (
       <div>
-        <Button onClick={this.conditionToggle}>Add Idea</Button>
+        <Button className="addIdeaButton" onClick={this.conditionToggle}>Add Idea</Button>
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggle} className="isOpen">
           <ModalBody>
             <fieldset>

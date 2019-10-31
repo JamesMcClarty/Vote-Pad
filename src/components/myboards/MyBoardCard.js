@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
+import { Button } from 'reactstrap';
 
 class MyBoardCard extends Component {
 
@@ -30,8 +31,8 @@ class MyBoardCard extends Component {
                 <div className="myboardcard-right">
                     <p>Data Created:</p>
                     <p>{this.props.board.dateCreated}</p>
-                    <button type="button"
-                        onClick={() => { this.props.history.push(`/boards/${this.props.board.id}/details`) }}>JOIN</button>
+                    <Button type="button" color="primary"
+                        onClick={() => { this.props.history.push(`/boards/${this.props.board.id}/details`) }}>JOIN</Button>
                 </div>
             </div>
         </>)

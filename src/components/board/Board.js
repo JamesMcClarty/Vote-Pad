@@ -91,7 +91,7 @@ class Board extends Component {
                 APIManager.getOneDataExpandAnother("boards", this.props.match.params.boardId, "boardstate")
                     .then((newData) => {
                         console.log(newData.subjectName)
-                        this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id, subjectName: newData.subjectName})
+                        this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id, subjectName: newData.subjectName })
                         APIManager.getAllByTwoConditions("ideas", "userId", this.state.currentUserId, "boardId", parseInt(this.props.match.params.boardId))
                             .then((results) => {
                                 if (Object.keys(results).length !== 0) {
@@ -136,8 +136,8 @@ class Board extends Component {
                 <div className="main-board-container">
                     <div className="note-board-header">
                         <div className="board-tabs-container">
-                            <button className="board-tab" onClick={this.switchToUnselected}>Unselected</button>
-                            <button className="board-tab" onClick={this.switchToSelected}>Selected</button>
+                            <button className="board-tab1" onClick={this.switchToUnselected}>Unselected</button>
+                            <button className="board-tab2" onClick={this.switchToSelected}>Selected</button>
                             <h3 className="status">Status: {this.state.boardState}</h3>
                         </div>
                         <div>

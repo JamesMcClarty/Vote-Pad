@@ -31,7 +31,7 @@ class MyBoardCard extends Component {
                 <div className="myboardcard-right">
                     <p>Data Created:</p>
                     <p>{this.props.board.dateCreated}</p>
-                    <Button type="button" color="primary"
+                    <Button type="button"
                         onClick={() => { this.props.history.push(`/boards/${this.props.board.id}/details`) }}>JOIN</Button>
                 </div>
             </div>

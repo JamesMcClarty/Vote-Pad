@@ -3,11 +3,20 @@
     flex-direction: column;
 }
 
+.searchbar{
+
+}
+
 .board-card{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    margin: 1%;
 }
 
+.myboards-container{
+    background-color: rgb(83, 66, 66);
+}
 
 .myboards-body{
     display: flex;
@@ -17,17 +26,27 @@
 .myboardcard-container{
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
-}
-
-.myboardcard-container{
-    width: 60%;
+    justify-content:space-evenly;
+    background-color: rgb(255, 255, 179);
+    font-family: 'Permanent Marker', cursive;
+    width: 63%;
+    padding-left: 0.5%;
+    padding-right: 0.5%;
 }
 
 .latestidea-container{
     width: 30%;
+    justify-content:space-evenly;
+    background-color: rgb(255, 255, 179);
+    font-family: 'Permanent Marker', cursive;
 }
 
-.body{
-    background-color: rgb(83, 66, 66);
+.myboards-header{
+    font-family: 'Permanent Marker', cursive;
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   padding-top: 1%;
+   padding-left: 1%;
+   padding-right: 1%;
 }

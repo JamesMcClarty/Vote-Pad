@@ -3,6 +3,7 @@ import APIManager from '../../modules/APIManager'
 import BoardIdeaCard from './BoardIdeaCard'
 import IdeaForm from './IdeaForm'
 import EditBoardForm from './EditBoardForm'
+import {Button} from 'reactstrap';
 import './Board.css'
 //Alertify
 import alertify from 'alertifyjs'
@@ -131,13 +132,13 @@ class Board extends Component {
             <article className="board-containter">
                 <div className="subject-containter">
                     <h1 className="board-subject-name">{this.state.subjectName}</h1>
-                    <p className="board-subject-user">By {this.state.userName}</p>
+                    <h4 className="board-subject-user">By {this.state.userName}</h4>
                 </div>
                 <div className="main-board-container">
                     <div className="note-board-header">
                         <div className="board-tabs-container">
-                            <button className="board-tab1" onClick={this.switchToUnselected}>Unselected</button>
-                            <button className="board-tab2" onClick={this.switchToSelected}>Selected</button>
+                            <Button className="board-tab1" onClick={this.switchToUnselected}>Unselected</Button>
+                            <Button className="board-tab2" onClick={this.switchToSelected}>Selected</Button>
                             <h3 className="status">Status: {this.state.boardState}</h3>
                         </div>
                         <div>

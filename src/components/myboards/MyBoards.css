@@ -3,8 +3,18 @@
     flex-direction: column;
 }
 
-.searchbar{
+.searchbar-container{
+    width: 40%;
+}
 
+.searchbar{
+margin-right: 2%;
+}
+
+.myboardstitle{
+    color:white;
+    font-family: 'Playfair Display', serif;
+    padding-left: 0.5%;
 }
 
 .board-card{
@@ -26,7 +36,7 @@
 .myboardcard-container{
     display: flex;
     flex-direction: row;
-    justify-content:space-evenly;
+    justify-content:space-between;
     background-color: rgb(255, 255, 179);
     font-family: 'Permanent Marker', cursive;
     width: 63%;

@@ -91,7 +91,6 @@ class Board extends Component {
                 this.setState({ ideas: data.ideas })
                 APIManager.getOneDataExpandAnother("boards", this.props.match.params.boardId, "boardstate")
                     .then((newData) => {
-                        console.log(newData.subjectName)
                         this.setState({ boardState: newData.boardstate.state, boardStateId: newData.boardstate.id, subjectName: newData.subjectName })
                         APIManager.getAllByTwoConditions("ideas", "userId", this.state.currentUserId, "boardId", parseInt(this.props.match.params.boardId))
                             .then((results) => {

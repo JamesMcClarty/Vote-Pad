@@ -1,0 +1,25 @@
+.myideas-container{
+    background-color: rgb(83, 66, 66);
+}
+
+.myIdeasContainer{
+    background-image: url(../../websiteresources/wooden-cork-board-seamless-tileable-texture-29991843.jpg);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding:2%;
+    border: 10px rgb(145, 101, 19) solid;
+    color:black;
+    font-family: 'Permanent Marker', cursive;
+    font-size: 20px;
+}
+
+.button-container{
+    margin-right: 1%;
+}
+
+.searchbar-container{
+    margin: 1%;
+    font-family: 'Permanent Marker', cursive;
+}

@@ -29,7 +29,6 @@ class BoardIdeaCard extends Component {
                     .then(data => {
                         this.setState({ votes: data.votes })
                         this.state.votes.forEach(vote => {
-                            console.log(vote.userId, this.state.currentUserId, vote)
                             if (vote.userId === this.state.currentUserId) {
                                 this.setState({ votedOn: vote.typeId, votedId: vote.id })
                             }
@@ -71,7 +70,6 @@ class BoardIdeaCard extends Component {
                         if (Object.keys(data.votes).length !== 0) {
                             this.setState({ votes: data.votes })
                             this.state.votes.forEach(vote => {
-                                console.log(vote.userId, this.state.currentUserId, vote)
                                 if (vote.userId === this.state.currentUserId) {
                                     this.setState({ votedOn: vote.typeId, votedId: vote.id })
                                 }
@@ -103,7 +101,6 @@ class BoardIdeaCard extends Component {
                     .then(data => {
                         this.setState({ votes: data.votes })
                         this.state.votes.forEach(vote => {
-                            console.log(vote.userId, this.state.currentUserId, vote)
                             if (vote.userId === this.state.currentUserId) {
                                 this.setState({ votedOn: vote.typeId, votedId: vote.id })
                             }
@@ -128,7 +125,6 @@ class BoardIdeaCard extends Component {
                         .then(data => {
                             this.setState({ votes: data.votes })
                             this.state.votes.forEach(vote => {
-                                console.log(vote.userId, this.state.currentUserId, vote)
                                 if (vote.userId === this.state.currentUserId) {
                                     this.setState({ votedOn: vote.typeId, votedId: vote.id })
                                 }
@@ -205,9 +201,7 @@ class BoardIdeaCard extends Component {
                         .then(data => {
                             this.setState({ votes: data.votes })
                             this.state.votes.forEach(vote => {
-                                console.log(vote.userId, this.state.currentUserId, vote)
                                 if (vote.userId === this.state.currentUserId) {
-                                    console.log(vote.typeId, vote.id)
                                     this.setState({ votedOn: vote.typeId, votedId: vote.id })
                                 }
                             })

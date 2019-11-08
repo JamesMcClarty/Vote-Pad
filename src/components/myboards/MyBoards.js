@@ -70,7 +70,7 @@ class MyBoards extends Component {
         return (
             <>
                 <article className="myboards-container">
-                    <h1>My Boards</h1>
+                    <h1 className="myboardstitle">My Boards</h1>
                     <div className="myboards-header">
 
                         <div className="searchbar-container">

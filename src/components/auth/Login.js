@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import { withRouter } from "react-router";
 import APIManager from "../../modules/APIManager";
+import {Button} from 'reactstrap';
 import alertify from 'alertifyjs'
 import '../../alertify.css'
 import './auth.css'
@@ -37,26 +38,26 @@ class Login extends Component {
 
   render() {
     return (
-      <fieldset>
+      <fieldset className = "authFieldSet">
         <h3 className = "h3Login">Please sign in</h3>
         <div className="login-formgrid">
           <div className="input-field">
-            <label>Email address</label>
+            <label className = "authLabel">Email address</label>
             <input onChange={this.handleFieldChange} type="email"
               id="email"
               placeholder="Email address"
               required="" autoFocus="" />
           </div>
           <div className="input-field">
-            <label>Password</label>
+            <label className = "authLabel">Password</label>
             <input onChange={this.handleFieldChange} type="password"
               id="password"
               placeholder="Password"
               required="" />
           </div>
-          <button className="login-button" onClick={this.handleLogin}>
+          <Button className="login-button" onClick={this.handleLogin}>
           Sign in
-            </button>
+            </Button>
         </div>
       </fieldset>
     )

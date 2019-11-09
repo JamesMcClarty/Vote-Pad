@@ -1,5 +1,6 @@
 import React, { Component } from "react"
 import APIManager from "../../modules/APIManager"
+import {Button} from 'reactstrap';
 import alertify from 'alertifyjs'
 import '../../alertify.css'
 import './auth.css'
@@ -47,9 +48,10 @@ class Registration extends Component {
     render() {
         return (
             <>
+            <div className = "registerBody">
                 <h3 className="h3Login">Register</h3>
                 <form onSubmit={this.handleRegister}>
-                    <fieldset>
+                    <fieldset className = "authFieldSet">
                         <div className="login-formgrid">
                             <div className="input-field">
                                 <label>Name</label>
@@ -86,12 +88,13 @@ class Registration extends Component {
                                     placeholder="Please Repeat Password"
                                     required autoFocus="" />
                             </div>
-                            <button type="submit" className="login-button" disabled = {this.state.submitButtonDisabled}>
+                            <Button type="submit" className="login-button" disabled = {this.state.submitButtonDisabled}>
                                 Sign in
-                    </button>
+                    </Button>
                         </div>
                     </fieldset>
                 </form>
+                </div>
             </>
         )
     }

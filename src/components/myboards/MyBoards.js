@@ -3,6 +3,7 @@ import APIManager from '../../modules/APIManager'
 import MyBoardCard from './MyBoardCard'
 import MyBoardIdeaCard from './MyBoardIdeaCard'
 import AddBoardForm from './AddBoardForm'
+import {Button} from 'reactstrap';
 import './MyBoards.css'
 //Alertify
 import alertify from 'alertifyjs'
@@ -69,11 +70,12 @@ class MyBoards extends Component {
         return (
             <>
                 <article className="myboards-container">
+                    <h1 className="myboardstitle">My Boards</h1>
                     <div className="myboards-header">
 
                         <div className="searchbar-container">
                             <input className="searchbar" type="text" onChange={this.handleFieldChange} id="searchText" />
-                            <button className="search-button" onClick={this.searchForBoards}>Search</button>
+                            <Button className="search-button" onClick={this.searchForBoards}>Search</Button>
                         </div>
 
                         <div className="addboard-container">

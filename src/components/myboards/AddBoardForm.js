@@ -26,7 +26,6 @@ class AddBoardForm extends Component {
 
         this.state.boards.forEach(board => {
             if (board.subjectName === this.state.newsubject) {
-                console.log(board.subjectName)
                 isNameTaken = true;
             }
         });

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
 import EditIdeaForm from './EditIdeaForm'
+import {Button} from 'reactstrap';
 //Alertify
 import alertify from 'alertifyjs'
 import '../../alertify.css'
@@ -28,7 +29,6 @@ class BoardIdeaCard extends Component {
                     .then(data => {
                         this.setState({ votes: data.votes })
                         this.state.votes.forEach(vote => {
-                            console.log(vote.userId, this.state.currentUserId, vote)
                             if (vote.userId === this.state.currentUserId) {
                                 this.setState({ votedOn: vote.typeId, votedId: vote.id })
                             }
@@ -42,7 +42,7 @@ class BoardIdeaCard extends Component {
     }
 
     acceptIdea = () => {
-        alertify.confirm("This is a confirm dialog.", this.confirmAccept,
+        alertify.confirm("","Are you sure? This cannot be undone!", this.confirmAccept,
             function () {
 
             });
@@ -70,7 +70,6 @@ class BoardIdeaCard extends Component {
                         if (Object.keys(data.votes).length !== 0) {
                             this.setState({ votes: data.votes })
                             this.state.votes.forEach(vote => {
-                                console.log(vote.userId, this.state.currentUserId, vote)
                                 if (vote.userId === this.state.currentUserId) {
                                     this.setState({ votedOn: vote.typeId, votedId: vote.id })
                                 }
@@ -102,7 +101,6 @@ class BoardIdeaCard extends Component {
                     .then(data => {
                         this.setState({ votes: data.votes })
                         this.state.votes.forEach(vote => {
-                            console.log(vote.userId, this.state.currentUserId, vote)
                             if (vote.userId === this.state.currentUserId) {
                                 this.setState({ votedOn: vote.typeId, votedId: vote.id })
                             }
@@ -127,7 +125,6 @@ class BoardIdeaCard extends Component {
                         .then(data => {
                             this.setState({ votes: data.votes })
                             this.state.votes.forEach(vote => {
-                                console.log(vote.userId, this.state.currentUserId, vote)
                                 if (vote.userId === this.state.currentUserId) {
                                     this.setState({ votedOn: vote.typeId, votedId: vote.id })
                                 }
@@ -147,11 +144,9 @@ class BoardIdeaCard extends Component {
                 .then(t => {
                     APIManager.getOneDataEmbedAnother("ideas", this.props.idea.id, "votes")
                         .then(data => {
-                            console.log(Object.keys(data.votes).length)
                             if (Object.keys(data.votes).length !== 0) {
                                 this.setState({ votes: data.votes })
                                 this.state.votes.forEach(vote => {
-                                    console.log(vote.userId, this.state.currentUserId, vote)
                                     if (vote.userId === this.state.currentUserId) {
                                         this.setState({ votedOn: vote.typeId, votedId: vote.id })
                                     }else{
@@ -182,7 +177,6 @@ class BoardIdeaCard extends Component {
                     .then(data => {
                         this.setState({ votes: data.votes })
                         this.state.votes.forEach(vote => {
-                            console.log(vote.userId, this.state.currentUserId, vote)
                             if (vote.userId === this.state.currentUserId) {
                                 this.setState({ votedOn: vote.typeId, votedId: vote.id })
                             }
@@ -207,9 +201,7 @@ class BoardIdeaCard extends Component {
                         .then(data => {
                             this.setState({ votes: data.votes })
                             this.state.votes.forEach(vote => {
-                                console.log(vote.userId, this.state.currentUserId, vote)
                                 if (vote.userId === this.state.currentUserId) {
-                                    console.log(vote.typeId, vote.id)
                                     this.setState({ votedOn: vote.typeId, votedId: vote.id })
                                 }
                             })
@@ -226,17 +218,17 @@ class BoardIdeaCard extends Component {
     implementStateButtons() {
         if (!this.props.idea.isChosen) {
             if (this.props.isCurrentBoardUser && this.props.boardState !== 1) {
-                return <button className="footer-button" onClick={this.acceptIdea}>Accept Idea</button>
+                return <Button className="footer-button" onClick={this.acceptIdea}>Accept Idea</Button>
             }
             else if (!this.props.isCurrentBoardUser && this.props.boardState === 1 && this.state.currentPoster === this.state.userLoggedIn) {
                 return <>
                     <EditIdeaForm idea={this.props.idea} reload={this.props.reload} />
-                    <button className="footer-button" onClick={() => this.props.deleteIdea(this.props.idea.id)}>Delete</button>
+                    <Button className="footer-button" onClick={() => this.props.deleteIdea(this.props.idea.id)}>Delete</Button>
                 </>
             }
             else if (!this.props.isCurrentBoardUser && this.props.boardState === 2 && this.state.currentPoster === this.state.userLoggedIn) {
                 return <>
-                    <button className="footer-button" onClick={() => this.props.deleteIdea(this.props.idea.id)}>Delete</button>
+                    <Button className="footer-button" onClick={() => this.props.deleteIdea(this.props.idea.id)}>Delete</Button>
                 </>
             }
             else {
@@ -269,11 +261,11 @@ class BoardIdeaCard extends Component {
                     <div className="idea-header">
                         {this.props.idea.isChosen ? (
                             <>
-                                <p>{this.state.userName}</p>
+                                <p>Idea by: {this.state.userName}</p>
                             </>
                         ) : (
                                 <>
-                                    <p>???</p>
+                                    <p>Idea by: Anonymous</p>
                                 </>
                             )}
                     </div>

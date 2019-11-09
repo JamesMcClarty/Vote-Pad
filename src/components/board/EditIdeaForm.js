@@ -50,6 +50,7 @@ class EditIdeaForm extends Component{
         <ModalBody>
           <fieldset>
             <div className="formgrid">
+            <label htmlFor="editedId">Edit your idea!</label>
               <input
                 type="text"
                 required
@@ -58,7 +59,6 @@ class EditIdeaForm extends Component{
                 id="editedIdea"
                 value={this.state.editedIdea}
               />
-              <label htmlFor="editedId">Edit your idea!</label>
             </div>
           </fieldset>
         </ModalBody>

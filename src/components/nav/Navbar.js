@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, useState } from 'react'
 import { Link, withRouter } from "react-router-dom"
+import { Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 import './Navbar.css'
-import { Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+
 
 class NavBar extends Component {
     constructor(props) {
@@ -23,41 +24,38 @@ class NavBar extends Component {
         return (
             <>
                 <div className="nav-container">
-                <Dropdown group isOpen={this.state.dropdownOpen} size="lg" toggle={this.toggle}>
-                    <DropdownToggle caret>
-                        
-                    </DropdownToggle>
-                    <DropdownMenu>
-                    <DropdownItem></DropdownItem>
-                    {this.props.userLogged ? (
+                    <div className="navbar-div">
+                        <Navbar color="faded" light>
+                            <NavbarToggler onClick={this.toggle} className="mr-2" />
+                            <Collapse isOpen={this.state.dropdownOpen} navbar>
+                                <Nav navbar>
+                                {this.props.userLogged ? (
                                 <>
-                                    <DropdownItem><Link className="nav-link" to="/myboards">My Boards</Link></DropdownItem>
-                                    <DropdownItem><Link className="nav-link" to="/boardlist">Board List</Link></DropdownItem>
-                                    <DropdownItem><Link className="nav-link" to="/myideas">My Ideas</Link></DropdownItem>
-                                    <DropdownItem divider /> 
-                                    <DropdownItem><Link className="nav-link" onClick ={this.props.logout} to="/login">Logout</Link></DropdownItem>
-                                </>
-                            ) : (
-                                    <>
-                                        <DropdownItem><Link className="nav-link"  to="/login">Log In</Link></DropdownItem>
-                                        <DropdownItem><Link className="nav-link"  to="/register">Register</Link></DropdownItem>
+                                    <NavItem>
+                                    <Link className="nav-link" to="/myboards">My Boards</Link>
+                                    </NavItem>
+                                    <NavItem>
+                                    <Link className="nav-link" to="/boardlist">Board List</Link>
+                                    </NavItem>
+                                    <NavItem>
+                                    <Link className="nav-link" to="/myideas">My Ideas</Link>
+                                    </NavItem>
+                                    <NavItem> 
+                                    <Link className="nav-link" onClick ={this.props.logout} to="/login">Logout</Link>
+                                    </NavItem>
                                     </>
-                                )}
-                    </DropdownMenu>
-                </Dropdown>
-                    <img className="nav-logo" src={require('../../websiteresources/votepad.png')} />
-                    
+                                     ) : (
+                                        <>
+                                            <NavItem><Link className="nav-link"  to="/login">Log In</Link></NavItem>
+                                            <NavItem><Link className="nav-link"  to="/register">Register</Link></NavItem>
+                                        </>
+                                    )}
+                                </Nav>
+                            </Collapse>
+                        </Navbar>
+                    </div>
                     <div>
-                        {this.props.userLogged ? (
-                            <div>
-                                <Link className="nav-link" onClick ={this.props.logout} to="/login">Logout</Link>
-                            </div>
-                        ) : (
-                                <div>
-                                    <Link className="nav-link" to="/login">Log In</Link>
-                                    <Link className="nav-link" to="/register">Register</Link>
-                                </div>
-                            )}
+                        <img className="nav-logo" src={require('../../websiteresources/votepad.png')} />
                     </div>
                 </div>
             </>

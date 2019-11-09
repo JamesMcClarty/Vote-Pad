@@ -12,7 +12,7 @@ class Home extends Component {
 
 
     componentDidMount() {
-        APIManager.getAllDataExpandAnother("boards", "user")
+        APIManager.getallEmbedandExpand("boards","ideas","user")
             .then((data) =>
                 this.setState({ boards: data })
             )
@@ -20,15 +20,17 @@ class Home extends Component {
 
     render() {
 
+        const arrangedData = this.state.boards.sort((a,b) => (a.ideas.length < b.ideas.length) ? 1 : ((b.ideas.length < a.ideas.length) ? -1 : 0)); 
 
         return (
             <>
                 <article className="home-container">
                     <div className="home-image">
-                        <p> You're on home page!</p>
+                    <img className="main-logo" src={require('../../websiteresources/votepad.png')} />
                     </div>
+                    <h1 className = "home-popular">Most popular boards</h1>
                     <div className="home-boardlist">
-                        {this.state.boards.map(board =>
+                        {arrangedData.map(board =>
                             <HomeCard key={board.id} board={board} {...this.props} />
                         )}
                     </div>

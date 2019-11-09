@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
 import MyIdeasCard from './MyIdeasCard'
+import './MyIdeas.css'
+import {Button} from 'reactstrap';
 //Alertify
 import alertify from 'alertifyjs'
 import '../../alertify.css'
@@ -25,7 +27,6 @@ class MyIdeas extends Component {
         let currentUser = JSON.parse(returnedStorage)
         APIManager.getAllByCondition("users", "email", currentUser.email)
         .then(data => {
-            console.log(data[0].id);
             this.setState({currentUserId:data[0].id})
             APIManager.getAllByConditionAndEmbed("ideas","userId",this.state.currentUserId,"votes")
             .then(ideasData =>{
@@ -45,10 +46,10 @@ class MyIdeas extends Component {
         return (
             <>
                 <article className="myideas-container">
-
-                    <div className="searchbar-container">
-                        <input className="searchbar" type="text" onChange={this.handleFieldChange} id="searchText" />
-                        <button className="search-button" onClick={this.searchForIdeas}>Search</button>
+                <h1 className="myboardstitle">My Ideas</h1>
+                    <div className="searchbaridea-container">
+                        <input className="ideasearchbar" type="text" onChange={this.handleFieldChange} id="searchText" />
+                        <Button onClick={this.searchForIdeas}>Search</Button>
                     </div>
 
                     <div className="myIdeasContainer">

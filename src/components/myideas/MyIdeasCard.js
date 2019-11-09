@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
+import {Button} from 'reactstrap';
+
 //Alertify
 import alertify from 'alertifyjs'
 import '../../alertify.css'
@@ -13,7 +15,6 @@ class MyIdeasCard extends Component {
     componentDidMount(){
         APIManager.getOne("boards", this.props.idea.boardId)
         .then(boardData => {
-            console.log(boardData)
             this.setState({boardSubject:boardData.subjectName})
         })
     }
@@ -50,17 +51,10 @@ class MyIdeasCard extends Component {
                                 <button className="xmark-0" disabled = {true}></button>
                                 <p className="xmark-votes">{downvotes}</p>
                             </div>
-                            {this.props.idea.isChosen ?(
-                                    <p>Accepted: Yes!</p>
-                                ):
-                                (
-                                    <p>Accepted: No...</p>
-                                )
-                            }
                         </div>
                         <div className="button-container">
-                        <button type="button"
-                            onClick={() => {this.props.history.push(`/boards/${this.props.idea.boardId}/details`)}}>GO TO BOARD</button>
+                        <Button type="button"
+                            onClick={() => {this.props.history.push(`/boards/${this.props.idea.boardId}/details`)}}>GO TO BOARD</Button>
                         </div>
                     </div>
                 </div>

@@ -11,7 +11,6 @@ import Registration from './components/auth/Registration'
 class AppView extends Component {
 
     render() {
-        console.log(this.props.user)
         return (
             <>
                 

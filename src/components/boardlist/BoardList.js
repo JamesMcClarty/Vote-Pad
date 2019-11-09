@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
 import BoardListCard from './BoardListCard'
 import MyBoardIdeaCard from '../myboards/MyBoardIdeaCard'
-import './MyBoards.css'
+import {Button} from 'reactstrap';
 //Alertify
 import alertify from 'alertifyjs'
 import '../../alertify.css'
@@ -66,25 +66,26 @@ class BoardList extends Component {
         return (
             <>
                 <article className="myboards-container">
+                <h1 className="myboardstitle">Board List</h1>
                     <div className="myboards-header">
 
                         <div className="searchbar-container">
                             <input className="searchbar" type="text" onChange={this.handleFieldChange} id = "searchText"/>
-                            <button className="search-button" onClick={this.searchForBoards}>Search</button>
+                            <Button className="search-button" onClick={this.searchForBoards}>Search</Button>
                         </div>
                     </div>
                     <div className="myboards-body">
                         <div className="board-card-container">
                             {this.state.boardList.map(board =>
-                                <>
+                                <div key={board.id}>
                                     <div className="board-card">
-                                        <BoardListCard key={board.id + "boardCard"}
+                                        <BoardListCard
                                             board={board}
                                             userId={this.state.userId}
                                             {...this.props} />
-                                        <MyBoardIdeaCard key={board.id + "boardIdeaCard"} boardId={board.id} {...this.props} />
+                                        <MyBoardIdeaCard boardId={board.id} {...this.props} />
                                     </div>
-                                </>
+                                </div>
                             )}
                         </div>
                     </div>

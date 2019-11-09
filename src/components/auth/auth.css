@@ -12,10 +12,28 @@
 }
 .h3Login{
     padding: 2%;
+    font-family: 'Playfair Display', serif;
+    color:white;
+    background-color: rgb(83, 66, 66);
+    
 }
 .input-field{
     max-width: 360px;
     display: flex;
     margin-top: 2px;
     justify-content: space-between;
+}
+
+.authFieldSet, .registerBody{
+    background-color: rgb(83, 66, 66);
+}
+
+.authLabel{
+    color:white;
+    font-family: 'Permanent Marker', cursive;
+}
+
+.login-button{
+    color:white;
+    font-family: 'Permanent Marker', cursive;
 }

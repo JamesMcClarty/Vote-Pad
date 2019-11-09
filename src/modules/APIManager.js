@@ -38,6 +38,9 @@ export default {
   getOneExpandAndEmbed(database, id, embed, expand) {
     return fetch(`${remoteURL}/${database}/${id}/?_embed=${embed}&_expand=${expand}`).then(e => e.json())
   },
+  getallEmbedandExpand(database, embed, expand) {
+    return fetch(`${remoteURL}/${database}?_embed=${embed}&_expand=${expand}`).then(e => e.json())
+  },
   delete(database, id) {
     return fetch(`${remoteURL}/${database}/${id}`, {
       method: "DELETE"

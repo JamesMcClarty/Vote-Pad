@@ -62,112 +62,161 @@
       "email": "Mo@gmail.com",
       "password": "1234",
       "id": 9
+    },
+    {
+      "name": "Taylor",
+      "username": "TayTay",
+      "email": "Taylor@taytay.com",
+      "password": "1234",
+      "id": 10
+    },
+    {
+      "name": "Jake",
+      "username": "JakeBake",
+      "email": "jake@jake.com",
+      "password": "1234",
+      "id": 11
     }
   ],
   "boards": [
     {
-      "id": 1,
-      "userId": 1,
-      "subjectName": "What to put in my cake please please please?",
-      "boardstateId": 2
+      "userId": 11,
+      "dateCreated": "Nov 9th 2019",
+      "subjectName": "What should I get for my girlfriend?",
+      "boardstateId": 1,
+      "id": 1
     },
     {
       "id": 2,
-      "userId": 2,
-      "subjectName": "What am I going to do with my life. Holy crap, someone help me AHHHHH?",
-      "dateCreated": "Currentdate",
-      "boardstateId": 1
+      "userId": 11,
+      "subjectName": "What should I do today?",
+      "boardstateId": 2
     },
     {
-      "id": 3,
-      "userId": 3,
-      "subjectName": "What to put in my pie?",
-      "dateCreated": "Currentdate",
-      "boardstateId": 1
+      "userId": 10,
+      "dateCreated": "Nov 9th 2019",
+      "subjectName": "What should I present in my meeting?",
+      "boardstateId": 1,
+      "id": 3
     },
     {
       "userId": 1,
-      "dateCreated": "Oct 30th 2019",
-      "subjectName": "What should I do to make my capstone pretty?",
+      "dateCreated": "Nov 9th 2019",
+      "subjectName": "What should me and my friend do?",
       "boardstateId": 1,
       "id": 4
+    },
+    {
+      "id": 5,
+      "userId": 9,
+      "subjectName": "This board is closed for no reason.",
+      "boardstateId": 3
     }
   ],
   "ideas": [
     {
-      "id": 2,
-      "userId": 3,
+      "userId": 10,
       "boardId": 1,
-      "description": "Apple",
+      "description": "Give her roses!",
+      "isChosen": false,
+      "id": 1
+    },
+    {
+      "id": 2,
+      "userId": 10,
+      "boardId": 2,
+      "description": "Mow the lawn!",
       "isChosen": true
     },
     {
-      "userId": 2,
-      "boardId": 3,
-      "description": "Vanilla",
+      "userId": 9,
+      "boardId": 2,
+      "description": "Go out to dinner!",
+      "isChosen": false,
+      "id": 3
+    },
+    {
+      "userId": 1,
+      "boardId": 2,
+      "description": "Hang out with your kids!",
       "isChosen": false,
       "id": 4
     },
     {
-      "id": 6,
-      "userId": 2,
-      "boardId": 2,
-      "description": "dsfafaf",
-      "isChosen": false
-    },
-    {
-      "id": 7,
-      "userId": 2,
-      "boardId": 1,
-      "description": "fdasfdfasfsasf",
-      "isChosen": true
-    },
-    {
-      "userId": 1,
-      "boardId": 2,
-      "description": "Get help, man!",
-      "isChosen": false,
-      "id": 9
-    },
-    {
-      "id": 10,
-      "userId": 6,
-      "boardId": 1,
-      "description": "Vanilla",
-      "isChosen": true
-    },
-    {
-      "userId": 1,
+      "userId": 9,
       "boardId": 3,
-      "description": "Choco",
+      "description": "Profits!",
       "isChosen": false,
-      "id": 11
+      "id": 5
+    },
+    {
+      "userId": 11,
+      "boardId": 3,
+      "description": "The product your team is working on!",
+      "isChosen": false,
+      "id": 6
     }
   ],
   "votes": [
     {
-      "ideaId": 7,
-      "userId": 8,
-      "typeId": 2,
-      "id": 1
+      "id": 1,
+      "ideaId": 2,
+      "userId": 11,
+      "typeId": 2
     },
     {
-      "ideaId": 7,
-      "userId": 9,
-      "typeId": 1,
-      "id": 2
-    },
-    {
-      "id": 3,
-      "ideaId": 7,
-      "userId": 6,
+      "id": 2,
+      "ideaId": 3,
+      "userId": 11,
       "typeId": 1
     },
     {
-      "id": 4,
-      "ideaId": 7,
+      "ideaId": 4,
+      "userId": 11,
+      "typeId": 1,
+      "id": 3
+    },
+    {
+      "ideaId": 2,
       "userId": 1,
-      "typeId": 2
+      "typeId": 1,
+      "id": 4
+    },
+    {
+      "ideaId": 3,
+      "userId": 1,
+      "typeId": 1,
+      "id": 5
+    },
+    {
+      "ideaId": 2,
+      "userId": 9,
+      "typeId": 1,
+      "id": 6
+    },
+    {
+      "ideaId": 4,
+      "userId": 9,
+      "typeId": 1,
+      "id": 7
+    },
+    {
+      "ideaId": 2,
+      "userId": 2,
+      "typeId": 1,
+      "id": 8
+    },
+    {
+      "ideaId": 3,
+      "userId": 2,
+      "typeId": 1,
+      "id": 9
+    },
+    {
+      "ideaId": 4,
+      "userId": 2,
+      "typeId": 2,
+      "id": 10
     }
   ],
   "types": [

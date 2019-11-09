@@ -5,18 +5,13 @@ import { Button } from 'reactstrap';
 class HomeCard extends Component {
 
     state = {
-        numberOfIdeas: 0,
         boardState: ""
     }
 
     componentDidMount() {
-        APIManager.getOneDataEmbedAnother("boards", this.props.board.id, "ideas")
+        APIManager.getOneDataExpandAnother("boards", this.props.board.id, "boardstate")
             .then(data => {
-                this.setState({ numberOfIdeas: data.ideas.length })
-                APIManager.getOneDataExpandAnother("boards", this.props.board.id, "boardstate")
-                    .then(data => {
-                        this.setState({ boardState: data.boardstate.state })
-                    })
+                this.setState({ boardState: data.boardstate.state })
             })
     }
 
@@ -26,7 +21,7 @@ class HomeCard extends Component {
                 <h4 className="card-subjectname">{this.props.board.subjectName}</h4>
                 <div className="home-card-container">
                     <div className="home-card-content-left">
-                        <p> Number of ideas: {this.state.numberOfIdeas}</p>
+                        <p> Number of ideas: {this.props.board.ideas.length}</p>
                         <p> Status: {this.state.boardState}</p>
                         <p> Owner: {this.props.board.user.username}</p>
                     </div>
@@ -35,7 +30,7 @@ class HomeCard extends Component {
                             <p>Date Created: {this.props.board.dateCreated}</p>
                         </div>
                         <div className="home-button">
-                            <Button type="button" 
+                            <Button type="button"
                                 onClick={() => { this.props.history.push(`/boards/${this.props.board.id}/details`) }}>JOIN</Button>
                         </div>
                     </div>

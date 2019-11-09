@@ -19,7 +19,16 @@
     margin-right: 1%;
 }
 
-.searchbar-container{
-    margin: 1%;
-    font-family: 'Permanent Marker', cursive;
+.searchbaridea-container{
+    padding: 1%;
 }
+
+.ideasearchbar{
+    margin-right: 1%;
+    font-family: 'Playfair Display', serif;
+}
+
+input[type=text], input[type=email], input[type=password]{
+    font-family: 'Playfair Display', serif;
+}
+

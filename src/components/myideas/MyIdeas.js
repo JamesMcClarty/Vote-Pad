@@ -47,9 +47,9 @@ class MyIdeas extends Component {
             <>
                 <article className="myideas-container">
                 <h1 className="myboardstitle">My Ideas</h1>
-                    <div className="searchbar-container">
-                        <input className="searchbar" type="text" onChange={this.handleFieldChange} id="searchText" />
-                        <Button className="search-button" onClick={this.searchForIdeas}>Search</Button>
+                    <div className="searchbaridea-container">
+                        <input className="ideasearchbar" type="text" onChange={this.handleFieldChange} id="searchText" />
+                        <Button onClick={this.searchForIdeas}>Search</Button>
                     </div>
 
                     <div className="myIdeasContainer">

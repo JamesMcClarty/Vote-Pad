@@ -54,7 +54,7 @@ class MyIdeasCard extends Component {
                         </div>
                         <div className="button-container">
                         <Button type="button"
-                            onClick={() => {this.props.history.push(`/boards/${this.props.idea.boardId}/details`)}}>GO TO BOARD</Button>
+                            onClick={() => {this.props.history.push(`/boards/${this.props.idea.boardId}/details`)}}>ATTEND</Button>
                         </div>
                     </div>
                 </div>

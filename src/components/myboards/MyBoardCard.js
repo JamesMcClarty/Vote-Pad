@@ -32,7 +32,7 @@ class MyBoardCard extends Component {
                     <p>Data Created:</p>
                     <p>{this.props.board.dateCreated}</p>
                     <Button type="button"
-                        onClick={() => { this.props.history.push(`/boards/${this.props.board.id}/details`) }}>JOIN</Button>
+                        onClick={() => { this.props.history.push(`/boards/${this.props.board.id}/details`) }}>ATTEND</Button>
                 </div>
             </div>
         </>)

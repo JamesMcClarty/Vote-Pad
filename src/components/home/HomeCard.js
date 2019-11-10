@@ -31,7 +31,7 @@ class HomeCard extends Component {
                         </div>
                         <div className="home-button">
                             <Button type="button"
-                                onClick={() => { this.props.history.push(`/boards/${this.props.board.id}/details`) }}>JOIN</Button>
+                                onClick={() => { this.props.history.push(`/boards/${this.props.board.id}/details`) }}>ATTEND</Button>
                         </div>
                     </div>
                 </div>

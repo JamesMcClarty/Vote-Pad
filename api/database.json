@@ -96,7 +96,7 @@
       "userId": 10,
       "dateCreated": "Nov 9th 2019",
       "subjectName": "What should I present in my meeting?",
-      "boardstateId": 1,
+      "boardstateId": 2,
       "id": 3
     },
     {
@@ -111,6 +111,12 @@
       "userId": 9,
       "subjectName": "This board is closed for no reason.",
       "boardstateId": 3
+    },
+    {
+      "id": 6,
+      "userId": 5,
+      "subjectName": "How will you pet me (because I'm James' cat)",
+      "boardstateId": 2
     }
   ],
   "ideas": [
@@ -155,6 +161,34 @@
       "description": "The product your team is working on!",
       "isChosen": false,
       "id": 6
+    },
+    {
+      "userId": 1,
+      "boardId": 6,
+      "description": "Give you belly rubs",
+      "isChosen": false,
+      "id": 7
+    },
+    {
+      "userId": 5,
+      "boardId": 1,
+      "description": "Give her catnip. It works for me!",
+      "isChosen": false,
+      "id": 8
+    },
+    {
+      "userId": 5,
+      "boardId": 4,
+      "description": "Come pet me together!",
+      "isChosen": false,
+      "id": 9
+    },
+    {
+      "userId": 3,
+      "boardId": 3,
+      "description": "AGILE sprints",
+      "isChosen": false,
+      "id": 10
     }
   ],
   "votes": [
@@ -217,6 +251,30 @@
       "userId": 2,
       "typeId": 2,
       "id": 10
+    },
+    {
+      "ideaId": 3,
+      "userId": 5,
+      "typeId": 1,
+      "id": 11
+    },
+    {
+      "ideaId": 4,
+      "userId": 5,
+      "typeId": 2,
+      "id": 12
+    },
+    {
+      "ideaId": 5,
+      "userId": 3,
+      "typeId": 1,
+      "id": 13
+    },
+    {
+      "ideaId": 6,
+      "userId": 3,
+      "typeId": 2,
+      "id": 14
     }
   ],
   "types": [

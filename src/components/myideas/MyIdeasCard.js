@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import APIManager from '../../modules/APIManager'
 import {Button} from 'reactstrap';
 
-//Alertify
-import alertify from 'alertifyjs'
-import '../../alertify.css'
-
 class MyIdeasCard extends Component {
 
     state = {

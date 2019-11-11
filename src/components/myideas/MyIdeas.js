@@ -3,10 +3,6 @@ import APIManager from '../../modules/APIManager'
 import MyIdeasCard from './MyIdeasCard'
 import './MyIdeas.css'
 import {Button} from 'reactstrap';
-//Alertify
-import alertify from 'alertifyjs'
-import '../../alertify.css'
-
 
 class MyIdeas extends Component {
 

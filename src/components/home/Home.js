@@ -26,7 +26,7 @@ class Home extends Component {
             <>
                 <article className="home-container">
                     <div className="home-image">
-                    <img className="main-logo" src={require('../../websiteresources/votepad.png')} />
+                    <img className="main-logo" src={require('../../websiteresources/votepad.png')} alt = "VotePad"/>
                     </div>
                     <h1 className = "home-popular">Most popular boards</h1>
                     <div className="home-boardlist">
